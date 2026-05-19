@@ -1,0 +1,54 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Node / frontend
+node_modules/
+.next/
+out/
+.nuxt/
+dist/
+*.tsbuildinfo
+.vercel/
+
+# Data / outputs (keep repo CSVs; ignore generated artifacts)
+*.parquet
+*.feather
+*.pkl
+*.pickle
+output/
+outputs/
+results/
+
+# Logs & caches
+*.log
+.cache/
