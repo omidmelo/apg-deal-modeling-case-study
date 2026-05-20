@@ -24,9 +24,24 @@ const SCORE_DIMENSION_LABELS: Record<keyof ScoreBreakdown, string> = {
   catalog_trajectory: "Catalog Trajectory",
   catalog_stability:  "Catalog Stability",
   audience_health:    "Audience Health",
-  new_release_perf:   "New Release Perf.",
+  new_release_perf:   "New Release Performance",
   career_runway:      "Career Runway",
   market_quality:     "Market Quality",
+}
+
+const SCORE_HINTS: Record<keyof ScoreBreakdown, string> = {
+  catalog_trajectory:
+    "Percentile rank (0–100) across the roster. Raw metric: % change per month in catalog streams, derived from a linear regression on the 30-day rolling mean over the last 24 months. Weight: 25% of composite score.",
+  catalog_stability:
+    "Percentile rank (0–100) across the roster. Raw metric: inverse coefficient of variation of monthly catalog streams over 24 months — low variance = high stability = predictable royalty cash flow. Weight: 20%.",
+  audience_health:
+    "Percentile rank (0–100) across the roster. Average of two sub-ranks: (1) growth rate of monthly listeners over the last 12 months (first half vs second half), and (2) absolute listener level. Weight: 20%.",
+  new_release_perf:
+    "Percentile rank (0–100) across the roster. Raw metric: peak 30-day average of new-release streams divided by average catalog streams over 24 months — measures how strongly new releases spike relative to the catalog baseline. Weight: 15%.",
+  career_runway:
+    "Percentile rank (0–100) across the roster. Raw metric: 1 / (1 + career years since debut). Newer artists rank higher — more growth runway ahead. Weight: 10%.",
+  market_quality:
+    "Absolute tier score (not a percentile). Based on the artist's primary market country and its DSP royalty yield (US = 100, UK = 90, Germany = 85 … Nigeria = 50). Not relative to the roster. Weight: 10%.",
 }
 
 const COLUMNS: { key: SortKey; label: string; align: "left" | "right" }[] = [
@@ -35,7 +50,7 @@ const COLUMNS: { key: SortKey; label: string; align: "left" | "right" }[] = [
   { key: "genre",                           label: "Genre",       align: "left"  },
   { key: "composite_score",                 label: "Score",       align: "right" },
   { key: "catalog_trajectory_pct",          label: "Trajectory",  align: "right" },
-  { key: "trailing_12mo_avg_daily_streams", label: "Streams/day", align: "right" },
+  { key: "trailing_12mo_avg_daily_streams", label: "Avg streams/day", align: "right" },
 ]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -105,10 +120,19 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
         {(Object.keys(SCORE_DIMENSION_LABELS) as (keyof ScoreBreakdown)[]).map((key) => {
           const val   = artist.scores[key]
           const label = artist.score_labels[key]
+          const hint  = SCORE_HINTS[key]
           return (
             <div key={key}>
               <div className="flex justify-between items-baseline mb-1.5">
-                <span className="text-xs text-zinc-400">{SCORE_DIMENSION_LABELS[key]}</span>
+                <span className="flex items-center gap-1 text-xs text-zinc-400">
+                  {SCORE_DIMENSION_LABELS[key]}
+                  <div className="relative group">
+                    <span className="text-zinc-700 hover:text-zinc-500 cursor-help text-xs leading-none select-none">ⓘ</span>
+                    <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-72 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
+                      {hint}
+                    </div>
+                  </div>
+                </span>
                 <span className="text-xs text-zinc-400 tabular-nums ml-3">
                   {val.toFixed(0)}
                   <span className="text-zinc-600"> · {label}</span>

@@ -23,9 +23,24 @@ const SCORE_LABELS: Record<keyof ScoreBreakdown, string> = {
   catalog_trajectory: "Catalog Trajectory",
   catalog_stability:  "Catalog Stability",
   audience_health:    "Audience Health",
-  new_release_perf:   "New Release Perf.",
+  new_release_perf:   "New Release Performance",
   career_runway:      "Career Runway",
   market_quality:     "Market Quality",
+}
+
+const SCORE_HINTS: Record<keyof ScoreBreakdown, string> = {
+  catalog_trajectory:
+    "Percentile rank (0–100) across the roster. Raw metric: % change per month in catalog streams, derived from a linear regression on the 30-day rolling mean over the last 24 months. Weight: 25% of composite score.",
+  catalog_stability:
+    "Percentile rank (0–100) across the roster. Raw metric: inverse coefficient of variation of monthly catalog streams over 24 months — low variance = high stability = predictable royalty cash flow. Weight: 20%.",
+  audience_health:
+    "Percentile rank (0–100) across the roster. Average of two sub-ranks: (1) growth rate of monthly listeners over the last 12 months (first half vs second half), and (2) absolute listener level. Weight: 20%.",
+  new_release_perf:
+    "Percentile rank (0–100) across the roster. Raw metric: peak 30-day average of new-release streams divided by average catalog streams over 24 months — measures how strongly new releases spike relative to the catalog baseline. Weight: 15%.",
+  career_runway:
+    "Percentile rank (0–100) across the roster. Raw metric: 1 / (1 + career years since debut). Newer artists rank higher — more growth runway ahead. Weight: 10%.",
+  market_quality:
+    "Absolute tier score (not a percentile). Based on the artist's primary market country and its DSP royalty yield (US = 100, UK = 90, Germany = 85 … Nigeria = 50). Not relative to the roster. Weight: 10%.",
 }
 
 // ─── Shared chart config ───────────────────────────────────────────────────────
@@ -66,10 +81,32 @@ function monthLabelFmt(value: string) {
 
 // ─── Chart wrapper ────────────────────────────────────────────────────────────
 
-function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
+function ChartCard({
+  title,
+  hint,
+  children,
+}: {
+  title: string
+  hint?: string
+  children: React.ReactNode
+}) {
   return (
     <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-      <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">{title}</p>
+      <div className="flex items-center gap-1.5 mb-3">
+        <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">{title}</p>
+        {hint && (
+          <div className="relative group">
+            <span className="text-zinc-700 hover:text-zinc-500 cursor-help text-xs leading-none select-none">
+              ⓘ
+            </span>
+            <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20
+                            w-60 rounded-md bg-zinc-800 border border-zinc-700
+                            px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
+              {hint}
+            </div>
+          </div>
+        )}
+      </div>
       {children}
     </div>
   )
@@ -90,21 +127,68 @@ const TooltipStyle = {
   cursor: { stroke: "#52525b" },
 }
 
+/**
+ * Custom tooltip for the Catalog vs New Release stacked chart.
+ * stackOffset="expand" normalises rendered areas to 0–1 but the generic
+ * formatter still receives raw stream counts — so we compute % ourselves.
+ */
+function CatalogSplitTooltip({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean
+  payload?: { dataKey: string; value: number }[]
+  label?: string
+}) {
+  if (!active || !payload?.length || !label) return null
+  const catalog = payload.find((p) => p.dataKey === "catalog_streams")?.value ?? 0
+  const newRel  = payload.find((p) => p.dataKey === "new_release_streams")?.value ?? 0
+  const total   = catalog + newRel
+  const catPct  = total > 0 ? ((catalog / total) * 100).toFixed(1) : "—"
+  const newPct  = total > 0 ? ((newRel  / total) * 100).toFixed(1) : "—"
+  return (
+    <div style={TooltipStyle.contentStyle}>
+      <p style={{ color: "#71717a", marginBottom: 6 }}>{monthLabelFmt(label)}</p>
+      <p style={{ color: "#a1a1aa", marginBottom: 2 }}>
+        Catalog{" "}
+        <span style={{ color: "#e4e4e7", fontVariantNumeric: "tabular-nums" }}>{catPct}%</span>
+      </p>
+      <p style={{ color: "#a1a1aa" }}>
+        New Release{" "}
+        <span style={{ color: "#e4e4e7", fontVariantNumeric: "tabular-nums" }}>{newPct}%</span>
+      </p>
+    </div>
+  )
+}
+
 // ─── Score bar ────────────────────────────────────────────────────────────────
 
 function ScoreDimension({
   label,
   score,
   scoreLabel,
+  hint,
 }: {
   label: string
   score: number
   scoreLabel: string
+  hint?: string
 }) {
   return (
     <div>
       <div className="flex justify-between items-baseline mb-1.5">
-        <span className="text-xs text-zinc-400">{label}</span>
+        <span className="flex items-center gap-1 text-xs text-zinc-400">
+          {label}
+          {hint && (
+            <div className="relative group">
+              <span className="text-zinc-700 hover:text-zinc-500 cursor-help text-xs leading-none select-none">ⓘ</span>
+              <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-72 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
+                {hint}
+              </div>
+            </div>
+          )}
+        </span>
         <span className="text-xs tabular-nums text-zinc-400">
           {score.toFixed(0)}
           <span className="text-zinc-600"> · {scoreLabel}</span>
@@ -171,7 +255,7 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
       ? "#4ade80" // green-400
       : catalog_trajectory_pct <= -0.5
       ? "#f87171" // red-400
-      : "#71717a"  // zinc-500
+      : "#e4e4e7"  // zinc-200 — light enough to read on dark bg
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
@@ -242,7 +326,10 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
             {/* 1. Total streams */}
-            <ChartCard title="Total Streams (monthly)">
+            <ChartCard
+              title="Total Streams (monthly)"
+              hint="Every play of every track, summed per calendar month. Includes both catalog and new-release streams. One listener playing the same song 50× counts as 50 streams."
+            >
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={monthly_history} margin={CHART_MARGIN}>
                   <CartesianGrid {...GRID_PROPS} />
@@ -282,7 +369,10 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
             </ChartCard>
 
             {/* 2. Monthly listeners */}
-            <ChartCard title="Monthly Listeners">
+            <ChartCard
+              title="Monthly Listeners"
+              hint="Unique listeners who played at least one track that month — a reach metric, not volume. 1,000 streams from 10 super-fans vs. 1,000 casual listeners look identical on the streams chart but very different here."
+            >
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={monthly_history} margin={CHART_MARGIN}>
                   <CartesianGrid {...GRID_PROPS} />
@@ -322,54 +412,55 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
             </ChartCard>
 
             {/* 3. Catalog vs New Release */}
-            <ChartCard title="Catalog vs. New Release">
+            <ChartCard
+              title="Catalog vs. New Release"
+              hint="Each point is the total streams for that calendar month. Catalog = tracks older than ~6 months at time of measurement. New Release = tracks released in the trailing ~6 months (frontline). Both series share the same zero baseline — values are not stacked."
+            >
               <ResponsiveContainer width="100%" height={180}>
-                <AreaChart data={monthly_history} margin={CHART_MARGIN} stackOffset="expand">
+                <AreaChart data={monthly_history} margin={CHART_MARGIN}>
                   <CartesianGrid {...GRID_PROPS} />
                   <XAxis
                     dataKey="month"
                     tickFormatter={monthTickFmt}
                     {...AXIS_STYLE}
-                    interval={0}
+                    interval={11}
                   />
                   <YAxis
-                    tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
+                    tickFormatter={(v: unknown) => fmtStreams(v as number)}
                     {...AXIS_STYLE}
                     width={50}
                   />
                   <Tooltip
                     {...TooltipStyle}
                     formatter={(v: unknown, name: unknown) => [
-                      `${((v as number) * 100).toFixed(1)}%`,
+                      fmtStreams(v as number),
                       name === "catalog_streams" ? "Catalog" : "New Release",
                     ]}
                     labelFormatter={(v: unknown) => monthLabelFmt(v as string)}
                   />
                   <defs>
                     <linearGradient id="grad-catalog" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#71717a" stopOpacity={0.6} />
-                      <stop offset="100%" stopColor="#71717a" stopOpacity={0.2} />
+                      <stop offset="0%" stopColor="#71717a" stopOpacity={0.7} />
+                      <stop offset="100%" stopColor="#71717a" stopOpacity={0.25} />
                     </linearGradient>
                     <linearGradient id="grad-newrel" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#a1a1aa" stopOpacity={0.4} />
-                      <stop offset="100%" stopColor="#a1a1aa" stopOpacity={0.1} />
+                      <stop offset="0%" stopColor="#a78bfa" stopOpacity={0.45} />
+                      <stop offset="100%" stopColor="#a78bfa" stopOpacity={0.05} />
                     </linearGradient>
                   </defs>
                   <Area
                     type="monotone"
                     dataKey="catalog_streams"
-                    stackId="1"
                     stroke="#71717a"
-                    strokeWidth={1}
+                    strokeWidth={1.5}
                     fill="url(#grad-catalog)"
                     dot={false}
                   />
                   <Area
                     type="monotone"
                     dataKey="new_release_streams"
-                    stackId="1"
-                    stroke="#a1a1aa"
-                    strokeWidth={1}
+                    stroke="#a78bfa"
+                    strokeWidth={1.5}
                     fill="url(#grad-newrel)"
                     dot={false}
                   />
@@ -381,14 +472,17 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
                   Catalog
                 </span>
                 <span className="flex items-center gap-1 text-xs text-zinc-500">
-                  <span className="w-2 h-2 rounded-sm bg-zinc-400 inline-block" />
+                  <span className="w-2 h-2 rounded-sm" style={{ backgroundColor: "#a78bfa" }} />
                   New Release
                 </span>
               </div>
             </ChartCard>
 
             {/* 4. Follower growth */}
-            <ChartCard title="Follower Growth">
+            <ChartCard
+              title="Follower Growth"
+              hint="Cumulative platform followers over time. A leading indicator of audience loyalty — followers are more likely to stream new releases on day one, which drives recoupment speed in a deal model."
+            >
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={monthly_history} margin={CHART_MARGIN}>
                   <CartesianGrid {...GRID_PROPS} />
@@ -429,7 +523,10 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
           </div>
 
           {/* 5. Catalog trajectory — full width */}
-          <ChartCard title="Catalog Trajectory — 30-day rolling mean (last 24 months)">
+          <ChartCard
+            title="Catalog Trajectory — 30-day rolling mean (last 24 months)"
+            hint="Daily catalog streams smoothed with a 30-day rolling mean to remove weekday/weekend noise. The dashed line is a linear regression fit — its slope converted to %/month is the Trajectory figure shown in the header."
+          >
             <ResponsiveContainer width="100%" height={200}>
               <ComposedChart data={trajectoryData} margin={CHART_MARGIN}>
                 <CartesianGrid {...GRID_PROPS} />
@@ -442,7 +539,8 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
                 <YAxis
                   tickFormatter={fmtStreams}
                   {...AXIS_STYLE}
-                  width={38}
+                  width={50}
+                  domain={["auto", "auto"]}
                 />
                 <Tooltip
                   {...TooltipStyle}
@@ -522,6 +620,7 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
                   label={SCORE_LABELS[key]}
                   score={scores[key]}
                   scoreLabel={score_labels[key]}
+                  hint={SCORE_HINTS[key]}
                 />
               ))}
             </div>
