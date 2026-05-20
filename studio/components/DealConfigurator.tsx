@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useDealStore, DEFAULT_PARAMS, type DealParams } from "@/store/deal"
+import { InfoTooltip } from "@/components/InfoTooltip"
 
 // ─── Shared input primitives ──────────────────────────────────────────────────
 
@@ -22,14 +23,7 @@ function LeverRow({
       {/* Label */}
       <div className="flex items-center gap-1 flex-1 min-w-0">
         <span className="text-xs text-zinc-400 truncate">{label}</span>
-        {hint && (
-          <div className="relative group shrink-0">
-            <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">ⓘ</span>
-            <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-30 w-64 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
-              {hint}
-            </div>
-          </div>
-        )}
+        {hint && <InfoTooltip content={hint} />}
       </div>
 
       {/* Input + unit */}

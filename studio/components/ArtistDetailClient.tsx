@@ -18,6 +18,7 @@ import {
 } from "recharts"
 
 import { fmtStreams, fmtTrajectory } from "@/lib/format"
+import { InfoTooltip } from "@/components/InfoTooltip"
 import type { ArtistDetail, ScoreBreakdown } from "@/types"
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -97,18 +98,7 @@ function ChartCard({
     <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
       <div className="flex items-center gap-1.5 mb-3">
         <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">{title}</p>
-        {hint && (
-          <div className="relative group">
-            <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">
-              ⓘ
-            </span>
-            <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20
-                            w-60 rounded-md bg-zinc-800 border border-zinc-700
-                            px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
-              {hint}
-            </div>
-          </div>
-        )}
+        {hint && <InfoTooltip content={hint} />}
       </div>
       {children}
     </div>
@@ -183,14 +173,7 @@ function ScoreDimension({
       <div className="flex justify-between items-baseline mb-1.5">
         <span className="flex items-center gap-1 text-xs text-zinc-400">
           {label}
-          {hint && (
-            <div className="relative group">
-              <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">ⓘ</span>
-              <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-72 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
-                {hint}
-              </div>
-            </div>
-          )}
+          {hint && <InfoTooltip content={hint} />}
         </span>
         <span className="text-xs tabular-nums text-zinc-400">
           {score.toFixed(0)}
@@ -271,7 +254,7 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
       : "#e4e4e7"  // zinc-200 — light enough to read on dark bg
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
 
       {/* Back link */}
       <Link
@@ -282,9 +265,9 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
       </Link>
 
       {/* Artist header */}
-      <div className="flex items-start justify-between gap-6 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-6 mb-6 sm:mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-zinc-100 mb-2">{meta.artist_name}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-2">{meta.artist_name}</h1>
           <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-500">
             <span>{meta.genre}</span>
             <span className="text-zinc-700">·</span>
@@ -303,7 +286,7 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
         </div>
 
         {/* Key stats */}
-        <div className="shrink-0 flex gap-6 text-right">
+        <div className="flex gap-5 sm:gap-6 sm:shrink-0 sm:text-right">
           <div>
             <p className="text-xs text-zinc-600 mb-0.5">Composite Score</p>
             <p className="text-3xl font-bold text-zinc-100 tabular-nums leading-none">
@@ -662,8 +645,8 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
       {activeTab === "deal" && (
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 items-start">
 
-          {/* Configurator — sticky within the deal section */}
-          <div className="sticky top-20 h-fit">
+          {/* Configurator — sticky on desktop, normal flow on mobile */}
+          <div className="sm:sticky sm:top-20 h-fit">
             <DealConfigurator />
           </div>
 

@@ -4,6 +4,7 @@ import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 
 import { fmtStreams, fmtTrajectory } from "@/lib/format"
+import { InfoTooltip } from "@/components/InfoTooltip"
 import type { RosterArtist, ScoreBreakdown } from "@/types"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -91,8 +92,8 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
   const router = useRouter()
 
   return (
-    <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-6 mb-8">
-      <div className="flex items-start justify-between gap-6">
+    <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 sm:p-6 mb-6 sm:mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
 
         {/* Left: identity */}
         <div className="min-w-0">
@@ -106,9 +107,9 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
         </div>
 
         {/* Right: composite score */}
-        <div className="text-right shrink-0">
+        <div className="sm:text-right sm:shrink-0">
           <p className="text-xs text-zinc-500 mb-1">Composite Score</p>
-          <p className="text-5xl font-bold text-zinc-100 tabular-nums leading-none">
+          <p className="text-4xl sm:text-5xl font-bold text-zinc-100 tabular-nums leading-none">
             {artist.composite_score.toFixed(0)}
           </p>
           <p className="text-xs text-zinc-500 mt-1">out of 100</p>
@@ -126,12 +127,7 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
               <div className="flex justify-between items-baseline mb-1.5">
                 <span className="flex items-center gap-1 text-xs text-zinc-400">
                   {SCORE_DIMENSION_LABELS[key]}
-                  <div className="relative group">
-                    <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">ⓘ</span>
-                    <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-72 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
-                      {hint}
-                    </div>
-                  </div>
+                  <InfoTooltip content={hint} />
                 </span>
                 <span className="text-xs text-zinc-400 tabular-nums ml-3">
                   {val.toFixed(0)}
@@ -147,8 +143,8 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
       </div>
 
       {/* Footer */}
-      <div className="mt-5 flex items-center justify-between">
-        <div className="flex gap-6 text-sm text-zinc-500">
+      <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm text-zinc-500">
           <span>
             Trajectory <TrajectoryCell pct={artist.catalog_trajectory_pct} />
             <span className="text-zinc-600 ml-1">· {artist.trajectory_label}</span>
@@ -163,7 +159,7 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
 
         <button
           onClick={() => router.push(`/artist/${artist.artist_id}`)}
-          className="px-4 py-2 rounded-md bg-zinc-100 text-zinc-900 text-sm font-semibold hover:bg-white transition-colors"
+          className="px-4 py-2 rounded-md bg-zinc-100 text-zinc-900 text-sm font-semibold hover:bg-white transition-colors self-start sm:self-auto"
         >
           View Artist →
         </button>
@@ -217,12 +213,12 @@ export function RosterClient({ artists }: { artists: RosterArtist[] }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
 
       <TopRecommendationCard artist={artists[0]} />
 
       {/* Controls */}
-      <div className="flex items-center justify-between mb-3 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2 sm:gap-4">
         <div>
           <h2 className="text-sm font-semibold text-zinc-300">Full Roster</h2>
           <p className="text-xs text-zinc-600 mt-0.5">{filtered.length} of {artists.length} artists</p>
@@ -233,12 +229,12 @@ export function RosterClient({ artists }: { artists: RosterArtist[] }) {
             placeholder="Search artist…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-44 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-700 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
+            className="flex-1 sm:w-44 min-w-0 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-700 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
           />
           <select
             value={genreFilter}
             onChange={(e) => setGenreFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-700 text-sm text-zinc-100 focus:outline-none focus:border-zinc-500 transition-colors"
+            className="shrink-0 px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-700 text-sm text-zinc-100 focus:outline-none focus:border-zinc-500 transition-colors"
           >
             {genres.map((g) => (
               <option key={g} value={g}>{g === "all" ? "All genres" : g}</option>
@@ -249,6 +245,7 @@ export function RosterClient({ artists }: { artists: RosterArtist[] }) {
 
       {/* Table */}
       <div className="rounded-lg border border-zinc-800 overflow-hidden">
+        <div className="overflow-x-auto">
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr className="bg-zinc-900 border-b border-zinc-800">
@@ -312,6 +309,7 @@ export function RosterClient({ artists }: { artists: RosterArtist[] }) {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )

@@ -17,6 +17,7 @@ import {
 import { runDeal }                          from "@/lib/dealEngine"
 import { useDealStore, toEngineInputs }     from "@/store/deal"
 import { fmtUsd }                           from "@/lib/format"
+import { InfoTooltip }                      from "@/components/InfoTooltip"
 import type { ArtistAnchors, ScenarioResult } from "@/types/deal"
 import type { Scenario }                    from "@/store/deal"
 
@@ -66,11 +67,11 @@ function KpiCard({
     : "text-zinc-100"
 
   return (
-    <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-3 flex-1 min-w-[120px]">
+    <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-3 sm:px-4">
       <p className="text-[10px] font-medium text-zinc-600 uppercase tracking-wider mb-1.5">
         {label}
       </p>
-      <p className={`text-xl font-bold tabular-nums leading-none ${valueColor}`}>
+      <p className={`text-lg sm:text-xl font-bold tabular-nums leading-none ${valueColor}`}>
         {value}
       </p>
       {sub && <p className="text-[10px] text-zinc-600 mt-1">{sub}</p>}
@@ -127,16 +128,7 @@ function ChartCard({
     <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
       <div className="flex items-center gap-1.5 mb-3">
         <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">{title}</p>
-        {hint && (
-          <div className="relative group">
-            <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">
-              ⓘ
-            </span>
-            <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-64 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
-              {hint}
-            </div>
-          </div>
-        )}
+        {hint && <InfoTooltip content={hint} />}
       </div>
       {children}
     </div>
@@ -253,7 +245,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
     <div className="mt-10 space-y-5">
 
       {/* Divider + header */}
-      <div className="border-t border-zinc-800 pt-8 flex items-start justify-between gap-4 flex-wrap">
+      <div className="border-t border-zinc-800 pt-6 sm:pt-8 flex items-start justify-between gap-4 flex-wrap">
         <div>
           <h2 className="text-sm font-semibold text-zinc-300">Deal Projection</h2>
           <p className="text-xs text-zinc-600 mt-0.5">
@@ -264,7 +256,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
       </div>
 
       {/* KPI row */}
-      <div className="flex gap-3 flex-wrap">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         <KpiCard
           label="Break-even"
           value={fmtMonth(active.breakEvenMonth)}
