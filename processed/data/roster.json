@@ -1,0 +1,2902 @@
+[
+  {
+    "artist_id": "A058",
+    "artist_name": "Luna Lyon",
+    "genre": "rock",
+    "primary_country": "South Korea",
+    "catalog_size": 8,
+    "debut_date": "2021-07-19",
+    "trailing_12mo_avg_daily_streams": 3486249,
+    "composite_score": 70.1,
+    "catalog_trajectory_pct": 4.774,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 100.0,
+      "catalog_stability": 1.0,
+      "audience_health": 92.0,
+      "new_release_perf": 74.0,
+      "career_runway": 86.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 1
+  },
+  {
+    "artist_id": "A065",
+    "artist_name": "Sage Knight",
+    "genre": "r&b",
+    "primary_country": "Brazil",
+    "catalog_size": 10,
+    "debut_date": "2021-06-26",
+    "trailing_12mo_avg_daily_streams": 3420090,
+    "composite_score": 70.0,
+    "catalog_trajectory_pct": 2.791,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 89.0,
+      "catalog_stability": 19.0,
+      "audience_health": 93.0,
+      "new_release_perf": 66.0,
+      "career_runway": 84.0,
+      "market_quality": 70.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 2
+  },
+  {
+    "artist_id": "A100",
+    "artist_name": "Vale Romero",
+    "genre": "electronic",
+    "primary_country": "US",
+    "catalog_size": 75,
+    "debut_date": "2021-08-09",
+    "trailing_12mo_avg_daily_streams": 1062955,
+    "composite_score": 69.9,
+    "catalog_trajectory_pct": 0.374,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 56.0,
+      "catalog_stability": 95.0,
+      "audience_health": 62.5,
+      "new_release_perf": 38.0,
+      "career_runway": 87.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 3
+  },
+  {
+    "artist_id": "A004",
+    "artist_name": "Aero Hayes",
+    "genre": "afrobeats",
+    "primary_country": "Mexico",
+    "catalog_size": 41,
+    "debut_date": "2022-03-08",
+    "trailing_12mo_avg_daily_streams": 691193,
+    "composite_score": 69.6,
+    "catalog_trajectory_pct": 0.364,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 55.0,
+      "catalog_stability": 93.0,
+      "audience_health": 43.0,
+      "new_release_perf": 87.0,
+      "career_runway": 96.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Strong",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 4
+  },
+  {
+    "artist_id": "A029",
+    "artist_name": "Vesper Wong",
+    "genre": "latin",
+    "primary_country": "UK",
+    "catalog_size": 22,
+    "debut_date": "2020-03-16",
+    "trailing_12mo_avg_daily_streams": 3611475,
+    "composite_score": 69.3,
+    "catalog_trajectory_pct": 4.546,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 96.0,
+      "catalog_stability": 5.0,
+      "audience_health": 95.0,
+      "new_release_perf": 75.0,
+      "career_runway": 51.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 5
+  },
+  {
+    "artist_id": "A030",
+    "artist_name": "Ines Wells",
+    "genre": "hip-hop",
+    "primary_country": "Spain",
+    "catalog_size": 18,
+    "debut_date": "2022-04-09",
+    "trailing_12mo_avg_daily_streams": 2187921,
+    "composite_score": 69.1,
+    "catalog_trajectory_pct": 4.408,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 93.0,
+      "catalog_stability": 8.0,
+      "audience_health": 88.5,
+      "new_release_perf": 73.0,
+      "career_runway": 98.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Strong",
+      "market_quality": "Developing"
+    },
+    "rank": 6
+  },
+  {
+    "artist_id": "A063",
+    "artist_name": "Eira Lopez",
+    "genre": "indie",
+    "primary_country": "Canada",
+    "catalog_size": 19,
+    "debut_date": "2022-03-24",
+    "trailing_12mo_avg_daily_streams": 464838,
+    "composite_score": 69.0,
+    "catalog_trajectory_pct": 0.74,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 64.0,
+      "catalog_stability": 67.0,
+      "audience_health": 60.0,
+      "new_release_perf": 67.0,
+      "career_runway": 97.0,
+      "market_quality": 78.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Moderate",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 7
+  },
+  {
+    "artist_id": "A064",
+    "artist_name": "Kalo Tang",
+    "genre": "indie",
+    "primary_country": "Japan",
+    "catalog_size": 12,
+    "debut_date": "2020-09-12",
+    "trailing_12mo_avg_daily_streams": 1091228,
+    "composite_score": 68.6,
+    "catalog_trajectory_pct": 2.606,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 85.0,
+      "catalog_stability": 34.0,
+      "audience_health": 64.5,
+      "new_release_perf": 97.0,
+      "career_runway": 66.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Moderate",
+      "new_release_perf": "Strong",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 8
+  },
+  {
+    "artist_id": "A077",
+    "artist_name": "Maven Ashby",
+    "genre": "rock",
+    "primary_country": "Sweden",
+    "catalog_size": 23,
+    "debut_date": "2019-12-07",
+    "trailing_12mo_avg_daily_streams": 2166658,
+    "composite_score": 68.3,
+    "catalog_trajectory_pct": 4.657,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 98.0,
+      "catalog_stability": 2.0,
+      "audience_health": 87.5,
+      "new_release_perf": 91.0,
+      "career_runway": 48.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Strong",
+      "career_runway": "Developing",
+      "market_quality": "Moderate"
+    },
+    "rank": 9
+  },
+  {
+    "artist_id": "A027",
+    "artist_name": "Delta Ortiz",
+    "genre": "indie",
+    "primary_country": "Germany",
+    "catalog_size": 17,
+    "debut_date": "2020-02-28",
+    "trailing_12mo_avg_daily_streams": 1500480,
+    "composite_score": 68.2,
+    "catalog_trajectory_pct": 4.466,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 95.0,
+      "catalog_stability": 6.0,
+      "audience_health": 85.0,
+      "new_release_perf": 85.0,
+      "career_runway": 50.0,
+      "market_quality": 85.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Strong",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 10
+  },
+  {
+    "artist_id": "A020",
+    "artist_name": "Onyx Rivers",
+    "genre": "country",
+    "primary_country": "Japan",
+    "catalog_size": 13,
+    "debut_date": "2021-04-19",
+    "trailing_12mo_avg_daily_streams": 254250,
+    "composite_score": 68.1,
+    "catalog_trajectory_pct": 1.323,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 73.0,
+      "catalog_stability": 59.0,
+      "audience_health": 47.0,
+      "new_release_perf": 95.0,
+      "career_runway": 79.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Developing",
+      "new_release_perf": "Strong",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 11
+  },
+  {
+    "artist_id": "A047",
+    "artist_name": "Mer Lane",
+    "genre": "r&b",
+    "primary_country": "US",
+    "catalog_size": 13,
+    "debut_date": "2021-09-22",
+    "trailing_12mo_avg_daily_streams": 258316,
+    "composite_score": 68.0,
+    "catalog_trajectory_pct": 1.449,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 81.0,
+      "catalog_stability": 51.0,
+      "audience_health": 31.5,
+      "new_release_perf": 83.0,
+      "career_runway": 88.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 12
+  },
+  {
+    "artist_id": "A076",
+    "artist_name": "Mer Adler",
+    "genre": "hip-hop",
+    "primary_country": "France",
+    "catalog_size": 8,
+    "debut_date": "2019-11-20",
+    "trailing_12mo_avg_daily_streams": 1493891,
+    "composite_score": 68.0,
+    "catalog_trajectory_pct": 2.746,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 88.0,
+      "catalog_stability": 25.0,
+      "audience_health": 78.0,
+      "new_release_perf": 84.0,
+      "career_runway": 46.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Moderate",
+      "new_release_perf": "Strong",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 13
+  },
+  {
+    "artist_id": "A084",
+    "artist_name": "Skye Halsey",
+    "genre": "latin",
+    "primary_country": "Australia",
+    "catalog_size": 54,
+    "debut_date": "2021-03-01",
+    "trailing_12mo_avg_daily_streams": 1571330,
+    "composite_score": 67.9,
+    "catalog_trajectory_pct": 0.308,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 52.0,
+      "catalog_stability": 83.0,
+      "audience_health": 72.0,
+      "new_release_perf": 56.0,
+      "career_runway": 75.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 14
+  },
+  {
+    "artist_id": "A091",
+    "artist_name": "Wren Zane",
+    "genre": "afrobeats",
+    "primary_country": "Japan",
+    "catalog_size": 36,
+    "debut_date": "2020-12-18",
+    "trailing_12mo_avg_daily_streams": 692280,
+    "composite_score": 67.7,
+    "catalog_trajectory_pct": 1.09,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 67.0,
+      "catalog_stability": 65.0,
+      "audience_health": 62.0,
+      "new_release_perf": 80.0,
+      "career_runway": 70.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Strong",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 15
+  },
+  {
+    "artist_id": "A066",
+    "artist_name": "Oren Lyon",
+    "genre": "rock",
+    "primary_country": "Sweden",
+    "catalog_size": 71,
+    "debut_date": "2020-07-29",
+    "trailing_12mo_avg_daily_streams": 757536,
+    "composite_score": 67.4,
+    "catalog_trajectory_pct": 0.167,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 48.0,
+      "catalog_stability": 99.0,
+      "audience_health": 57.0,
+      "new_release_perf": 69.0,
+      "career_runway": 63.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Moderate",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 16
+  },
+  {
+    "artist_id": "A003",
+    "artist_name": "Atlas Lane",
+    "genre": "k-pop",
+    "primary_country": "US",
+    "catalog_size": 11,
+    "debut_date": "2020-05-30",
+    "trailing_12mo_avg_daily_streams": 1082865,
+    "composite_score": 67.3,
+    "catalog_trajectory_pct": 2.558,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 83.0,
+      "catalog_stability": 30.0,
+      "audience_health": 78.5,
+      "new_release_perf": 61.0,
+      "career_runway": 57.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Moderate",
+      "new_release_perf": "Moderate",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 17
+  },
+  {
+    "artist_id": "A069",
+    "artist_name": "Jett Diaz",
+    "genre": "pop",
+    "primary_country": "South Korea",
+    "catalog_size": 23,
+    "debut_date": "2021-02-22",
+    "trailing_12mo_avg_daily_streams": 2099788,
+    "composite_score": 67.0,
+    "catalog_trajectory_pct": 4.413,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 94.0,
+      "catalog_stability": 7.0,
+      "audience_health": 88.5,
+      "new_release_perf": 68.0,
+      "career_runway": 74.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 18
+  },
+  {
+    "artist_id": "A018",
+    "artist_name": "Saint Lyon",
+    "genre": "r&b",
+    "primary_country": "Nigeria",
+    "catalog_size": 26,
+    "debut_date": "2021-03-16",
+    "trailing_12mo_avg_daily_streams": 3028642,
+    "composite_score": 66.9,
+    "catalog_trajectory_pct": 2.792,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 90.0,
+      "catalog_stability": 15.0,
+      "audience_health": 86.5,
+      "new_release_perf": 77.0,
+      "career_runway": 76.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Moderate",
+      "market_quality": "Developing"
+    },
+    "rank": 19
+  },
+  {
+    "artist_id": "A086",
+    "artist_name": "Dax Quill",
+    "genre": "r&b",
+    "primary_country": "Australia",
+    "catalog_size": 45,
+    "debut_date": "2020-07-13",
+    "trailing_12mo_avg_daily_streams": 1129419,
+    "composite_score": 66.8,
+    "catalog_trajectory_pct": 1.174,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 68.0,
+      "catalog_stability": 61.0,
+      "audience_health": 69.5,
+      "new_release_perf": 65.0,
+      "career_runway": 60.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Moderate",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 20
+  },
+  {
+    "artist_id": "A099",
+    "artist_name": "Indigo Hayes",
+    "genre": "electronic",
+    "primary_country": "UK",
+    "catalog_size": 11,
+    "debut_date": "2021-11-24",
+    "trailing_12mo_avg_daily_streams": 2516687,
+    "composite_score": 66.1,
+    "catalog_trajectory_pct": 4.725,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 99.0,
+      "catalog_stability": 3.0,
+      "audience_health": 92.5,
+      "new_release_perf": 29.0,
+      "career_runway": 89.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 21
+  },
+  {
+    "artist_id": "A014",
+    "artist_name": "Jove Xu",
+    "genre": "latin",
+    "primary_country": "Brazil",
+    "catalog_size": 17,
+    "debut_date": "2017-01-20",
+    "trailing_12mo_avg_daily_streams": 2629037,
+    "composite_score": 65.2,
+    "catalog_trajectory_pct": 2.581,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 84.0,
+      "catalog_stability": 24.0,
+      "audience_health": 88.0,
+      "new_release_perf": 93.0,
+      "career_runway": 8.0,
+      "market_quality": 70.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Strong",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 22
+  },
+  {
+    "artist_id": "A079",
+    "artist_name": "Iver Cole",
+    "genre": "electronic",
+    "primary_country": "Spain",
+    "catalog_size": 28,
+    "debut_date": "2022-05-08",
+    "trailing_12mo_avg_daily_streams": 353129,
+    "composite_score": 65.2,
+    "catalog_trajectory_pct": 1.354,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 74.0,
+      "catalog_stability": 56.0,
+      "audience_health": 55.0,
+      "new_release_perf": 58.0,
+      "career_runway": 100.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Strong",
+      "market_quality": "Developing"
+    },
+    "rank": 23
+  },
+  {
+    "artist_id": "A001",
+    "artist_name": "Cyrus North",
+    "genre": "afrobeats",
+    "primary_country": "Canada",
+    "catalog_size": 11,
+    "debut_date": "2020-11-18",
+    "trailing_12mo_avg_daily_streams": 886946,
+    "composite_score": 65.0,
+    "catalog_trajectory_pct": 2.492,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 82.0,
+      "catalog_stability": 31.0,
+      "audience_health": 71.0,
+      "new_release_perf": 63.0,
+      "career_runway": 69.0,
+      "market_quality": 78.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Moderate",
+      "new_release_perf": "Moderate",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 24
+  },
+  {
+    "artist_id": "A094",
+    "artist_name": "Zaia Penn",
+    "genre": "afrobeats",
+    "primary_country": "UK",
+    "catalog_size": 74,
+    "debut_date": "2020-04-17",
+    "trailing_12mo_avg_daily_streams": 1923777,
+    "composite_score": 64.8,
+    "catalog_trajectory_pct": 0.348,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 54.0,
+      "catalog_stability": 87.0,
+      "audience_health": 72.5,
+      "new_release_perf": 33.0,
+      "career_runway": 54.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 25
+  },
+  {
+    "artist_id": "A017",
+    "artist_name": "Vale Voss",
+    "genre": "indie",
+    "primary_country": "Sweden",
+    "catalog_size": 38,
+    "debut_date": "2021-05-02",
+    "trailing_12mo_avg_daily_streams": 905179,
+    "composite_score": 64.7,
+    "catalog_trajectory_pct": 0.921,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 65.0,
+      "catalog_stability": 64.0,
+      "audience_health": 56.5,
+      "new_release_perf": 59.0,
+      "career_runway": 80.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 26
+  },
+  {
+    "artist_id": "A041",
+    "artist_name": "Kalo Quill",
+    "genre": "pop",
+    "primary_country": "Japan",
+    "catalog_size": 26,
+    "debut_date": "2021-05-12",
+    "trailing_12mo_avg_daily_streams": 309340,
+    "composite_score": 64.5,
+    "catalog_trajectory_pct": 1.422,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 78.0,
+      "catalog_stability": 50.0,
+      "audience_health": 35.0,
+      "new_release_perf": 89.0,
+      "career_runway": 81.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 27
+  },
+  {
+    "artist_id": "A059",
+    "artist_name": "Ash Vey",
+    "genre": "k-pop",
+    "primary_country": "UK",
+    "catalog_size": 35,
+    "debut_date": "2019-10-28",
+    "trailing_12mo_avg_daily_streams": 482830,
+    "composite_score": 63.8,
+    "catalog_trajectory_pct": 0.494,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 60.0,
+      "catalog_stability": 89.0,
+      "audience_health": 54.5,
+      "new_release_perf": 45.0,
+      "career_runway": 44.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 28
+  },
+  {
+    "artist_id": "A026",
+    "artist_name": "Ari Singh",
+    "genre": "pop",
+    "primary_country": "South Korea",
+    "catalog_size": 8,
+    "debut_date": "2017-08-11",
+    "trailing_12mo_avg_daily_streams": 3387210,
+    "composite_score": 63.5,
+    "catalog_trajectory_pct": 2.795,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 91.0,
+      "catalog_stability": 26.0,
+      "audience_health": 90.5,
+      "new_release_perf": 62.0,
+      "career_runway": 14.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 29
+  },
+  {
+    "artist_id": "A092",
+    "artist_name": "Jett Reign",
+    "genre": "electronic",
+    "primary_country": "Mexico",
+    "catalog_size": 20,
+    "debut_date": "2019-11-08",
+    "trailing_12mo_avg_daily_streams": 1257703,
+    "composite_score": 62.2,
+    "catalog_trajectory_pct": 0.28,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 51.0,
+      "catalog_stability": 100.0,
+      "audience_health": 56.0,
+      "new_release_perf": 52.0,
+      "career_runway": 45.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Developing",
+      "market_quality": "Moderate"
+    },
+    "rank": 30
+  },
+  {
+    "artist_id": "A035",
+    "artist_name": "Luma Mara",
+    "genre": "pop",
+    "primary_country": "UK",
+    "catalog_size": 26,
+    "debut_date": "2020-07-27",
+    "trailing_12mo_avg_daily_streams": 1296718,
+    "composite_score": 61.9,
+    "catalog_trajectory_pct": 0.117,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 45.0,
+      "catalog_stability": 86.0,
+      "audience_health": 54.5,
+      "new_release_perf": 49.0,
+      "career_runway": 62.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 31
+  },
+  {
+    "artist_id": "A056",
+    "artist_name": "Zaia Xan",
+    "genre": "r&b",
+    "primary_country": "Japan",
+    "catalog_size": 20,
+    "debut_date": "2016-06-23",
+    "trailing_12mo_avg_daily_streams": 2006945,
+    "composite_score": 61.8,
+    "catalog_trajectory_pct": 4.65,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 97.0,
+      "catalog_stability": 4.0,
+      "audience_health": 88.0,
+      "new_release_perf": 82.0,
+      "career_runway": 3.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Strong",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 32
+  },
+  {
+    "artist_id": "A081",
+    "artist_name": "Nash Black",
+    "genre": "indie",
+    "primary_country": "Germany",
+    "catalog_size": 39,
+    "debut_date": "2019-02-03",
+    "trailing_12mo_avg_daily_streams": 1703954,
+    "composite_score": 61.4,
+    "catalog_trajectory_pct": 1.396,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 76.0,
+      "catalog_stability": 54.0,
+      "audience_health": 79.5,
+      "new_release_perf": 26.0,
+      "career_runway": 33.0,
+      "market_quality": 85.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 33
+  },
+  {
+    "artist_id": "A034",
+    "artist_name": "Indigo Ellis",
+    "genre": "country",
+    "primary_country": "France",
+    "catalog_size": 35,
+    "debut_date": "2019-06-27",
+    "trailing_12mo_avg_daily_streams": 786234,
+    "composite_score": 61.2,
+    "catalog_trajectory_pct": 1.264,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 71.0,
+      "catalog_stability": 58.0,
+      "audience_health": 62.0,
+      "new_release_perf": 50.0,
+      "career_runway": 37.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 34
+  },
+  {
+    "artist_id": "A038",
+    "artist_name": "Tova Dane",
+    "genre": "k-pop",
+    "primary_country": "Mexico",
+    "catalog_size": 16,
+    "debut_date": "2020-08-25",
+    "trailing_12mo_avg_daily_streams": 585623,
+    "composite_score": 60.8,
+    "catalog_trajectory_pct": 0.715,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 63.0,
+      "catalog_stability": 80.0,
+      "audience_health": 55.5,
+      "new_release_perf": 36.0,
+      "career_runway": 65.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Weak",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 35
+  },
+  {
+    "artist_id": "A080",
+    "artist_name": "Ari Xu",
+    "genre": "k-pop",
+    "primary_country": "UK",
+    "catalog_size": 21,
+    "debut_date": "2016-06-07",
+    "trailing_12mo_avg_daily_streams": 2907673,
+    "composite_score": 60.5,
+    "catalog_trajectory_pct": 2.675,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 87.0,
+      "catalog_stability": 22.0,
+      "audience_health": 86.0,
+      "new_release_perf": 53.0,
+      "career_runway": 2.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 36
+  },
+  {
+    "artist_id": "A007",
+    "artist_name": "Vex Vaughn",
+    "genre": "country",
+    "primary_country": "Australia",
+    "catalog_size": 27,
+    "debut_date": "2018-12-08",
+    "trailing_12mo_avg_daily_streams": 1065947,
+    "composite_score": 60.4,
+    "catalog_trajectory_pct": 1.281,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 72.0,
+      "catalog_stability": 60.0,
+      "audience_health": 69.5,
+      "new_release_perf": 37.0,
+      "career_runway": 30.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 37
+  },
+  {
+    "artist_id": "A062",
+    "artist_name": "Atlas Sato",
+    "genre": "pop",
+    "primary_country": "Australia",
+    "catalog_size": 46,
+    "debut_date": "2021-03-31",
+    "trailing_12mo_avg_daily_streams": 1353907,
+    "composite_score": 60.4,
+    "catalog_trajectory_pct": 0.13,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 46.0,
+      "catalog_stability": 75.0,
+      "audience_health": 58.0,
+      "new_release_perf": 44.0,
+      "career_runway": 77.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 38
+  },
+  {
+    "artist_id": "A055",
+    "artist_name": "Indigo Xan",
+    "genre": "pop",
+    "primary_country": "Nigeria",
+    "catalog_size": 23,
+    "debut_date": "2020-02-12",
+    "trailing_12mo_avg_daily_streams": 1297041,
+    "composite_score": 60.2,
+    "catalog_trajectory_pct": 1.231,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 69.0,
+      "catalog_stability": 62.0,
+      "audience_health": 74.0,
+      "new_release_perf": 39.0,
+      "career_runway": 49.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Developing"
+    },
+    "rank": 39
+  },
+  {
+    "artist_id": "A006",
+    "artist_name": "Maven Mara",
+    "genre": "afrobeats",
+    "primary_country": "South Korea",
+    "catalog_size": 37,
+    "debut_date": "2019-12-06",
+    "trailing_12mo_avg_daily_streams": 510637,
+    "composite_score": 60.0,
+    "catalog_trajectory_pct": 0.571,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 62.0,
+      "catalog_stability": 79.0,
+      "audience_health": 45.5,
+      "new_release_perf": 54.0,
+      "career_runway": 47.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Developing",
+      "market_quality": "Moderate"
+    },
+    "rank": 40
+  },
+  {
+    "artist_id": "A087",
+    "artist_name": "Luma Lane",
+    "genre": "rock",
+    "primary_country": "France",
+    "catalog_size": 36,
+    "debut_date": "2018-09-12",
+    "trailing_12mo_avg_daily_streams": 812319,
+    "composite_score": 60.0,
+    "catalog_trajectory_pct": 0.508,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 61.0,
+      "catalog_stability": 74.0,
+      "audience_health": 50.0,
+      "new_release_perf": 60.0,
+      "career_runway": 27.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Developing",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 41
+  },
+  {
+    "artist_id": "A095",
+    "artist_name": "Dru Grey",
+    "genre": "country",
+    "primary_country": "Spain",
+    "catalog_size": 61,
+    "debut_date": "2018-04-13",
+    "trailing_12mo_avg_daily_streams": 1635359,
+    "composite_score": 60.0,
+    "catalog_trajectory_pct": 0.438,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 57.0,
+      "catalog_stability": 94.0,
+      "audience_health": 72.5,
+      "new_release_perf": 30.0,
+      "career_runway": 22.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 42
+  },
+  {
+    "artist_id": "A053",
+    "artist_name": "Vesper Storm",
+    "genre": "electronic",
+    "primary_country": "US",
+    "catalog_size": 51,
+    "debut_date": "2019-07-24",
+    "trailing_12mo_avg_daily_streams": 1105388,
+    "composite_score": 59.9,
+    "catalog_trajectory_pct": 0.312,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 53.0,
+      "catalog_stability": 70.0,
+      "audience_health": 62.5,
+      "new_release_perf": 40.0,
+      "career_runway": 41.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 43
+  },
+  {
+    "artist_id": "A070",
+    "artist_name": "Lior Sato",
+    "genre": "r&b",
+    "primary_country": "France",
+    "catalog_size": 79,
+    "debut_date": "2016-05-25",
+    "trailing_12mo_avg_daily_streams": 2013767,
+    "composite_score": 59.8,
+    "catalog_trajectory_pct": 0.488,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 59.0,
+      "catalog_stability": 73.0,
+      "audience_health": 74.5,
+      "new_release_perf": 48.0,
+      "career_runway": 1.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 44
+  },
+  {
+    "artist_id": "A013",
+    "artist_name": "Juno Moss",
+    "genre": "r&b",
+    "primary_country": "Mexico",
+    "catalog_size": 27,
+    "debut_date": "2019-05-06",
+    "trailing_12mo_avg_daily_streams": 377707,
+    "composite_score": 59.5,
+    "catalog_trajectory_pct": 0.232,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 50.0,
+      "catalog_stability": 84.0,
+      "audience_health": 49.0,
+      "new_release_perf": 72.0,
+      "career_runway": 36.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 45
+  },
+  {
+    "artist_id": "A002",
+    "artist_name": "Jett Vaughn",
+    "genre": "afrobeats",
+    "primary_country": "Japan",
+    "catalog_size": 63,
+    "debut_date": "2020-04-13",
+    "trailing_12mo_avg_daily_streams": 933630,
+    "composite_score": 59.2,
+    "catalog_trajectory_pct": 0.064,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 44.0,
+      "catalog_stability": 91.0,
+      "audience_health": 50.0,
+      "new_release_perf": 55.0,
+      "career_runway": 53.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Developing",
+      "market_quality": "Moderate"
+    },
+    "rank": 46
+  },
+  {
+    "artist_id": "A050",
+    "artist_name": "Lior Fox",
+    "genre": "r&b",
+    "primary_country": "Sweden",
+    "catalog_size": 161,
+    "debut_date": "2021-12-11",
+    "trailing_12mo_avg_daily_streams": 6040396,
+    "composite_score": 59.1,
+    "catalog_trajectory_pct": -0.185,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 40.0,
+      "catalog_stability": 82.0,
+      "audience_health": 72.5,
+      "new_release_perf": 11.0,
+      "career_runway": 90.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 47
+  },
+  {
+    "artist_id": "A088",
+    "artist_name": "Rune Ueda",
+    "genre": "afrobeats",
+    "primary_country": "Japan",
+    "catalog_size": 48,
+    "debut_date": "2018-12-24",
+    "trailing_12mo_avg_daily_streams": 1729708,
+    "composite_score": 59.0,
+    "catalog_trajectory_pct": 0.452,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 58.0,
+      "catalog_stability": 72.0,
+      "audience_health": 72.0,
+      "new_release_perf": 41.0,
+      "career_runway": 31.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 48
+  },
+  {
+    "artist_id": "A060",
+    "artist_name": "Otis Ivers",
+    "genre": "rock",
+    "primary_country": "Mexico",
+    "catalog_size": 32,
+    "debut_date": "2020-07-02",
+    "trailing_12mo_avg_daily_streams": 204118,
+    "composite_score": 58.5,
+    "catalog_trajectory_pct": 1.377,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 75.0,
+      "catalog_stability": 52.0,
+      "audience_health": 17.0,
+      "new_release_perf": 94.0,
+      "career_runway": 59.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Developing",
+      "market_quality": "Moderate"
+    },
+    "rank": 49
+  },
+  {
+    "artist_id": "A093",
+    "artist_name": "Saint Lane",
+    "genre": "afrobeats",
+    "primary_country": "Nigeria",
+    "catalog_size": 24,
+    "debut_date": "2017-10-14",
+    "trailing_12mo_avg_daily_streams": 1775403,
+    "composite_score": 58.4,
+    "catalog_trajectory_pct": 2.657,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 86.0,
+      "catalog_stability": 28.0,
+      "audience_health": 80.5,
+      "new_release_perf": 57.0,
+      "career_runway": 16.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 50
+  },
+  {
+    "artist_id": "A011",
+    "artist_name": "Frey Roan",
+    "genre": "afrobeats",
+    "primary_country": "UK",
+    "catalog_size": 175,
+    "debut_date": "2019-04-19",
+    "trailing_12mo_avg_daily_streams": 4811989,
+    "composite_score": 58.2,
+    "catalog_trajectory_pct": -0.332,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 30.0,
+      "catalog_stability": 96.0,
+      "audience_health": 68.5,
+      "new_release_perf": 35.0,
+      "career_runway": 35.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 51
+  },
+  {
+    "artist_id": "A021",
+    "artist_name": "Echo Reign",
+    "genre": "indie",
+    "primary_country": "Canada",
+    "catalog_size": 37,
+    "debut_date": "2017-04-19",
+    "trailing_12mo_avg_daily_streams": 170729,
+    "composite_score": 58.2,
+    "catalog_trajectory_pct": 1.42,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 77.0,
+      "catalog_stability": 55.0,
+      "audience_health": 28.0,
+      "new_release_perf": 90.0,
+      "career_runway": 10.0,
+      "market_quality": 78.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 52
+  },
+  {
+    "artist_id": "A039",
+    "artist_name": "Kell Akin",
+    "genre": "electronic",
+    "primary_country": "France",
+    "catalog_size": 66,
+    "debut_date": "2018-05-21",
+    "trailing_12mo_avg_daily_streams": 599914,
+    "composite_score": 58.2,
+    "catalog_trajectory_pct": 0.199,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 49.0,
+      "catalog_stability": 77.0,
+      "audience_health": 52.5,
+      "new_release_perf": 64.0,
+      "career_runway": 23.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Developing",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 53
+  },
+  {
+    "artist_id": "A009",
+    "artist_name": "Phoenix Rivers",
+    "genre": "indie",
+    "primary_country": "Nigeria",
+    "catalog_size": 23,
+    "debut_date": "2017-07-17",
+    "trailing_12mo_avg_daily_streams": 130416,
+    "composite_score": 58.1,
+    "catalog_trajectory_pct": 1.443,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 80.0,
+      "catalog_stability": 53.0,
+      "audience_health": 49.0,
+      "new_release_perf": 76.0,
+      "career_runway": 13.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Developing",
+      "audience_health": "Developing",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 54
+  },
+  {
+    "artist_id": "A012",
+    "artist_name": "Iver Dane",
+    "genre": "country",
+    "primary_country": "Germany",
+    "catalog_size": 77,
+    "debut_date": "2016-07-29",
+    "trailing_12mo_avg_daily_streams": 782629,
+    "composite_score": 57.9,
+    "catalog_trajectory_pct": 0.132,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 47.0,
+      "catalog_stability": 92.0,
+      "audience_health": 34.5,
+      "new_release_perf": 79.0,
+      "career_runway": 5.0,
+      "market_quality": 85.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Weak",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 55
+  },
+  {
+    "artist_id": "A016",
+    "artist_name": "Sable Fane",
+    "genre": "rock",
+    "primary_country": "Japan",
+    "catalog_size": 46,
+    "debut_date": "2018-06-24",
+    "trailing_12mo_avg_daily_streams": 3837388,
+    "composite_score": 57.7,
+    "catalog_trajectory_pct": 3.004,
+    "trajectory_label": "Accelerating",
+    "scores": {
+      "catalog_trajectory": 92.0,
+      "catalog_stability": 9.0,
+      "audience_health": 93.5,
+      "new_release_perf": 34.0,
+      "career_runway": 26.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Strong",
+      "catalog_stability": "Weak",
+      "audience_health": "Strong",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 56
+  },
+  {
+    "artist_id": "A052",
+    "artist_name": "Frey Garza",
+    "genre": "afrobeats",
+    "primary_country": "Sweden",
+    "catalog_size": 28,
+    "debut_date": "2018-03-31",
+    "trailing_12mo_avg_daily_streams": 455016,
+    "composite_score": 57.4,
+    "catalog_trajectory_pct": 1.425,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 79.0,
+      "catalog_stability": 47.0,
+      "audience_health": 62.0,
+      "new_release_perf": 42.0,
+      "career_runway": 21.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 57
+  },
+  {
+    "artist_id": "A071",
+    "artist_name": "Halen Dane",
+    "genre": "indie",
+    "primary_country": "Spain",
+    "catalog_size": 40,
+    "debut_date": "2019-01-08",
+    "trailing_12mo_avg_daily_streams": 903735,
+    "composite_score": 56.9,
+    "catalog_trajectory_pct": 1.004,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 66.0,
+      "catalog_stability": 63.0,
+      "audience_health": 55.5,
+      "new_release_perf": 51.0,
+      "career_runway": 32.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Moderate",
+      "audience_health": "Developing",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 58
+  },
+  {
+    "artist_id": "A042",
+    "artist_name": "Tova Black",
+    "genre": "rock",
+    "primary_country": "Spain",
+    "catalog_size": 42,
+    "debut_date": "2017-09-26",
+    "trailing_12mo_avg_daily_streams": 684997,
+    "composite_score": 56.1,
+    "catalog_trajectory_pct": 1.252,
+    "trajectory_label": "Growing",
+    "scores": {
+      "catalog_trajectory": 70.0,
+      "catalog_stability": 57.0,
+      "audience_health": 64.5,
+      "new_release_perf": 47.0,
+      "career_runway": 15.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Moderate",
+      "catalog_stability": "Developing",
+      "audience_health": "Moderate",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 59
+  },
+  {
+    "artist_id": "A082",
+    "artist_name": "Nova Fane",
+    "genre": "hip-hop",
+    "primary_country": "Spain",
+    "catalog_size": 144,
+    "debut_date": "2019-09-14",
+    "trailing_12mo_avg_daily_streams": 5479852,
+    "composite_score": 56.0,
+    "catalog_trajectory_pct": -0.286,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 33.0,
+      "catalog_stability": 97.0,
+      "audience_health": 72.5,
+      "new_release_perf": 25.0,
+      "career_runway": 43.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Developing"
+    },
+    "rank": 60
+  },
+  {
+    "artist_id": "A032",
+    "artist_name": "Ny Singh",
+    "genre": "country",
+    "primary_country": "Brazil",
+    "catalog_size": 117,
+    "debut_date": "2018-05-28",
+    "trailing_12mo_avg_daily_streams": 2642286,
+    "composite_score": 54.9,
+    "catalog_trajectory_pct": -0.25,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 35.0,
+      "catalog_stability": 98.0,
+      "audience_health": 70.0,
+      "new_release_perf": 21.0,
+      "career_runway": 24.0,
+      "market_quality": 70.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 61
+  },
+  {
+    "artist_id": "A019",
+    "artist_name": "Talon West",
+    "genre": "indie",
+    "primary_country": "Mexico",
+    "catalog_size": 101,
+    "debut_date": "2019-07-06",
+    "trailing_12mo_avg_daily_streams": 3711806,
+    "composite_score": 53.4,
+    "catalog_trajectory_pct": -0.292,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 32.0,
+      "catalog_stability": 85.0,
+      "audience_health": 71.5,
+      "new_release_perf": 28.0,
+      "career_runway": 39.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 62
+  },
+  {
+    "artist_id": "A025",
+    "artist_name": "Hadley North",
+    "genre": "rock",
+    "primary_country": "South Korea",
+    "catalog_size": 177,
+    "debut_date": "2018-03-27",
+    "trailing_12mo_avg_daily_streams": 7470954,
+    "composite_score": 51.3,
+    "catalog_trajectory_pct": -0.227,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 37.0,
+      "catalog_stability": 90.0,
+      "audience_health": 71.0,
+      "new_release_perf": 7.0,
+      "career_runway": 20.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 63
+  },
+  {
+    "artist_id": "A044",
+    "artist_name": "Wren Hayes",
+    "genre": "r&b",
+    "primary_country": "South Korea",
+    "catalog_size": 129,
+    "debut_date": "2019-07-10",
+    "trailing_12mo_avg_daily_streams": 2422108,
+    "composite_score": 50.1,
+    "catalog_trajectory_pct": -0.268,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 34.0,
+      "catalog_stability": 76.0,
+      "audience_health": 68.0,
+      "new_release_perf": 13.0,
+      "career_runway": 40.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Moderate",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Moderate"
+    },
+    "rank": 64
+  },
+  {
+    "artist_id": "A046",
+    "artist_name": "Niko Wells",
+    "genre": "latin",
+    "primary_country": "Japan",
+    "catalog_size": 95,
+    "debut_date": "2016-08-21",
+    "trailing_12mo_avg_daily_streams": 4291613,
+    "composite_score": 49.9,
+    "catalog_trajectory_pct": -0.221,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 38.0,
+      "catalog_stability": 88.0,
+      "audience_health": 72.0,
+      "new_release_perf": 8.0,
+      "career_runway": 7.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Strong",
+      "audience_health": "Moderate",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 65
+  },
+  {
+    "artist_id": "A008",
+    "artist_name": "Niko Storm",
+    "genre": "rock",
+    "primary_country": "US",
+    "catalog_size": 110,
+    "debut_date": "2020-04-19",
+    "trailing_12mo_avg_daily_streams": 319393,
+    "composite_score": 49.0,
+    "catalog_trajectory_pct": -1.494,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 22.0,
+      "catalog_stability": 48.0,
+      "audience_health": 27.5,
+      "new_release_perf": 86.0,
+      "career_runway": 55.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 66
+  },
+  {
+    "artist_id": "A097",
+    "artist_name": "Ezra Fox",
+    "genre": "afrobeats",
+    "primary_country": "UK",
+    "catalog_size": 39,
+    "debut_date": "2021-12-12",
+    "trailing_12mo_avg_daily_streams": 175082,
+    "composite_score": 48.4,
+    "catalog_trajectory_pct": -1.546,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 18.0,
+      "catalog_stability": 42.0,
+      "audience_health": 21.0,
+      "new_release_perf": 88.0,
+      "career_runway": 91.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 67
+  },
+  {
+    "artist_id": "A051",
+    "artist_name": "Elio Quinn",
+    "genre": "latin",
+    "primary_country": "France",
+    "catalog_size": 4,
+    "debut_date": "2021-01-06",
+    "trailing_12mo_avg_daily_streams": 10243,
+    "composite_score": 47.8,
+    "catalog_trajectory_pct": -0.124,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 43.0,
+      "catalog_stability": 78.0,
+      "audience_health": 25.0,
+      "new_release_perf": 6.0,
+      "career_runway": 73.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 68
+  },
+  {
+    "artist_id": "A085",
+    "artist_name": "Zaia Hart",
+    "genre": "latin",
+    "primary_country": "UK",
+    "catalog_size": 4,
+    "debut_date": "2021-01-01",
+    "trailing_12mo_avg_daily_streams": 26623,
+    "composite_score": 47.6,
+    "catalog_trajectory_pct": -0.172,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 42.0,
+      "catalog_stability": 66.0,
+      "audience_health": 34.0,
+      "new_release_perf": 6.0,
+      "career_runway": 72.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Moderate",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 69
+  },
+  {
+    "artist_id": "A040",
+    "artist_name": "Zaia North",
+    "genre": "r&b",
+    "primary_country": "US",
+    "catalog_size": 105,
+    "debut_date": "2020-08-11",
+    "trailing_12mo_avg_daily_streams": 237059,
+    "composite_score": 47.2,
+    "catalog_trajectory_pct": -1.533,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 20.0,
+      "catalog_stability": 43.0,
+      "audience_health": 27.5,
+      "new_release_perf": 78.0,
+      "career_runway": 64.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Moderate",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 70
+  },
+  {
+    "artist_id": "A031",
+    "artist_name": "Uma Sloane",
+    "genre": "r&b",
+    "primary_country": "Sweden",
+    "catalog_size": 55,
+    "debut_date": "2021-06-04",
+    "trailing_12mo_avg_daily_streams": 90206,
+    "composite_score": 44.8,
+    "catalog_trajectory_pct": -1.624,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 14.0,
+      "catalog_stability": 36.0,
+      "audience_health": 17.5,
+      "new_release_perf": 99.0,
+      "career_runway": 83.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 71
+  },
+  {
+    "artist_id": "A075",
+    "artist_name": "Wilder Brand",
+    "genre": "pop",
+    "primary_country": "Germany",
+    "catalog_size": 110,
+    "debut_date": "2019-08-19",
+    "trailing_12mo_avg_daily_streams": 228178,
+    "composite_score": 44.8,
+    "catalog_trajectory_pct": -1.563,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 17.0,
+      "catalog_stability": 41.0,
+      "audience_health": 24.5,
+      "new_release_perf": 98.0,
+      "career_runway": 42.0,
+      "market_quality": 85.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 72
+  },
+  {
+    "artist_id": "A068",
+    "artist_name": "Ilo Hart",
+    "genre": "hip-hop",
+    "primary_country": "Canada",
+    "catalog_size": 93,
+    "debut_date": "2021-04-01",
+    "trailing_12mo_avg_daily_streams": 139328,
+    "composite_score": 44.5,
+    "catalog_trajectory_pct": -1.596,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 15.0,
+      "catalog_stability": 38.0,
+      "audience_health": 19.0,
+      "new_release_perf": 92.0,
+      "career_runway": 78.0,
+      "market_quality": 78.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 73
+  },
+  {
+    "artist_id": "A057",
+    "artist_name": "Wren Sterling",
+    "genre": "country",
+    "primary_country": "Brazil",
+    "catalog_size": 48,
+    "debut_date": "2020-12-19",
+    "trailing_12mo_avg_daily_streams": 224372,
+    "composite_score": 44.4,
+    "catalog_trajectory_pct": -1.68,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 11.0,
+      "catalog_stability": 40.0,
+      "audience_health": 26.0,
+      "new_release_perf": 96.0,
+      "career_runway": 71.0,
+      "market_quality": 70.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 74
+  },
+  {
+    "artist_id": "A036",
+    "artist_name": "Jett Whittle",
+    "genre": "latin",
+    "primary_country": "France",
+    "catalog_size": 83,
+    "debut_date": "2019-04-01",
+    "trailing_12mo_avg_daily_streams": 312887,
+    "composite_score": 44.3,
+    "catalog_trajectory_pct": -1.531,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 21.0,
+      "catalog_stability": 46.0,
+      "audience_health": 30.5,
+      "new_release_perf": 81.0,
+      "career_runway": 34.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 75
+  },
+  {
+    "artist_id": "A015",
+    "artist_name": "Kell Ortiz",
+    "genre": "rock",
+    "primary_country": "UK",
+    "catalog_size": 3,
+    "debut_date": "2020-06-13",
+    "trailing_12mo_avg_daily_streams": 21773,
+    "composite_score": 43.3,
+    "catalog_trajectory_pct": -0.249,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 36.0,
+      "catalog_stability": 68.0,
+      "audience_health": 20.5,
+      "new_release_perf": 12.0,
+      "career_runway": 58.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Moderate",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 76
+  },
+  {
+    "artist_id": "A023",
+    "artist_name": "Tova Sloane",
+    "genre": "country",
+    "primary_country": "Japan",
+    "catalog_size": 81,
+    "debut_date": "2022-02-01",
+    "trailing_12mo_avg_daily_streams": 335829,
+    "composite_score": 41.2,
+    "catalog_trajectory_pct": -1.49,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 24.0,
+      "catalog_stability": 45.0,
+      "audience_health": 36.5,
+      "new_release_perf": 20.0,
+      "career_runway": 94.0,
+      "market_quality": 65.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 77
+  },
+  {
+    "artist_id": "A074",
+    "artist_name": "Xen Diaz",
+    "genre": "country",
+    "primary_country": "UK",
+    "catalog_size": 78,
+    "debut_date": "2021-06-03",
+    "trailing_12mo_avg_daily_streams": 172568,
+    "composite_score": 41.2,
+    "catalog_trajectory_pct": -1.493,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 23.0,
+      "catalog_stability": 49.0,
+      "audience_health": 26.0,
+      "new_release_perf": 22.0,
+      "career_runway": 82.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 78
+  },
+  {
+    "artist_id": "A072",
+    "artist_name": "Ash Knight",
+    "genre": "k-pop",
+    "primary_country": "Australia",
+    "catalog_size": 8,
+    "debut_date": "2017-12-17",
+    "trailing_12mo_avg_daily_streams": 28935,
+    "composite_score": 40.7,
+    "catalog_trajectory_pct": -0.217,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 39.0,
+      "catalog_stability": 71.0,
+      "audience_health": 30.5,
+      "new_release_perf": 6.0,
+      "career_runway": 17.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Moderate",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 79
+  },
+  {
+    "artist_id": "A054",
+    "artist_name": "Marlow North",
+    "genre": "afrobeats",
+    "primary_country": "Sweden",
+    "catalog_size": 19,
+    "debut_date": "2022-01-26",
+    "trailing_12mo_avg_daily_streams": 490089,
+    "composite_score": 39.7,
+    "catalog_trajectory_pct": -0.317,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 31.0,
+      "catalog_stability": 32.0,
+      "audience_health": 27.0,
+      "new_release_perf": 23.0,
+      "career_runway": 92.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Moderate"
+    },
+    "rank": 80
+  },
+  {
+    "artist_id": "A022",
+    "artist_name": "Nash Adler",
+    "genre": "k-pop",
+    "primary_country": "Spain",
+    "catalog_size": 47,
+    "debut_date": "2017-06-15",
+    "trailing_12mo_avg_daily_streams": 298692,
+    "composite_score": 39.4,
+    "catalog_trajectory_pct": -1.537,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 19.0,
+      "catalog_stability": 44.0,
+      "audience_health": 19.0,
+      "new_release_perf": 100.0,
+      "career_runway": 12.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Developing",
+      "audience_health": "Weak",
+      "new_release_perf": "Strong",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 81
+  },
+  {
+    "artist_id": "A024",
+    "artist_name": "Kai Joss",
+    "genre": "country",
+    "primary_country": "Nigeria",
+    "catalog_size": 7,
+    "debut_date": "2018-12-07",
+    "trailing_12mo_avg_daily_streams": 13221,
+    "composite_score": 39.2,
+    "catalog_trajectory_pct": -0.179,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 41.0,
+      "catalog_stability": 81.0,
+      "audience_health": 20.0,
+      "new_release_perf": 6.0,
+      "career_runway": 29.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Developing",
+      "catalog_stability": "Strong",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 82
+  },
+  {
+    "artist_id": "A048",
+    "artist_name": "Ari Joon",
+    "genre": "electronic",
+    "primary_country": "Brazil",
+    "catalog_size": 7,
+    "debut_date": "2019-07-06",
+    "trailing_12mo_avg_daily_streams": 16978,
+    "composite_score": 37.0,
+    "catalog_trajectory_pct": -0.39,
+    "trajectory_label": "Stable",
+    "scores": {
+      "catalog_trajectory": 29.0,
+      "catalog_stability": 69.0,
+      "audience_health": 21.0,
+      "new_release_perf": 6.0,
+      "career_runway": 39.0,
+      "market_quality": 70.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Moderate",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 83
+  },
+  {
+    "artist_id": "A089",
+    "artist_name": "Quinn Ueda",
+    "genre": "r&b",
+    "primary_country": "Germany",
+    "catalog_size": 58,
+    "debut_date": "2016-07-31",
+    "trailing_12mo_avg_daily_streams": 263976,
+    "composite_score": 36.6,
+    "catalog_trajectory_pct": -1.594,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 16.0,
+      "catalog_stability": 37.0,
+      "audience_health": 28.0,
+      "new_release_perf": 70.0,
+      "career_runway": 6.0,
+      "market_quality": 85.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 84
+  },
+  {
+    "artist_id": "A005",
+    "artist_name": "Skye Ashby",
+    "genre": "hip-hop",
+    "primary_country": "Spain",
+    "catalog_size": 48,
+    "debut_date": "2021-06-30",
+    "trailing_12mo_avg_daily_streams": 197412,
+    "composite_score": 34.2,
+    "catalog_trajectory_pct": -1.676,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 12.0,
+      "catalog_stability": 35.0,
+      "audience_health": 29.5,
+      "new_release_perf": 27.0,
+      "career_runway": 85.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Developing"
+    },
+    "rank": 85
+  },
+  {
+    "artist_id": "A043",
+    "artist_name": "Ezra Wells",
+    "genre": "latin",
+    "primary_country": "South Korea",
+    "catalog_size": 46,
+    "debut_date": "2017-01-29",
+    "trailing_12mo_avg_daily_streams": 193532,
+    "composite_score": 33.8,
+    "catalog_trajectory_pct": -0.539,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 28.0,
+      "catalog_stability": 29.0,
+      "audience_health": 13.5,
+      "new_release_perf": 71.0,
+      "career_runway": 9.0,
+      "market_quality": 68.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Moderate",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 86
+  },
+  {
+    "artist_id": "A033",
+    "artist_name": "Crew Tang",
+    "genre": "r&b",
+    "primary_country": "US",
+    "catalog_size": 24,
+    "debut_date": "2016-07-17",
+    "trailing_12mo_avg_daily_streams": 302780,
+    "composite_score": 32.6,
+    "catalog_trajectory_pct": -0.712,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 26.0,
+      "catalog_stability": 27.0,
+      "audience_health": 17.0,
+      "new_release_perf": 46.0,
+      "career_runway": 4.0,
+      "market_quality": 100.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 87
+  },
+  {
+    "artist_id": "A028",
+    "artist_name": "Talon Mercer",
+    "genre": "hip-hop",
+    "primary_country": "France",
+    "catalog_size": 59,
+    "debut_date": "2018-06-23",
+    "trailing_12mo_avg_daily_streams": 152671,
+    "composite_score": 31.5,
+    "catalog_trajectory_pct": -1.624,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 14.0,
+      "catalog_stability": 39.0,
+      "audience_health": 24.0,
+      "new_release_perf": 31.0,
+      "career_runway": 25.0,
+      "market_quality": 82.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Strong"
+    },
+    "rank": 88
+  },
+  {
+    "artist_id": "A078",
+    "artist_name": "Quill Hayes",
+    "genre": "afrobeats",
+    "primary_country": "Sweden",
+    "catalog_size": 28,
+    "debut_date": "2017-05-22",
+    "trailing_12mo_avg_daily_streams": 444037,
+    "composite_score": 29.4,
+    "catalog_trajectory_pct": -0.593,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 27.0,
+      "catalog_stability": 33.0,
+      "audience_health": 23.5,
+      "new_release_perf": 18.0,
+      "career_runway": 11.0,
+      "market_quality": 75.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 89
+  },
+  {
+    "artist_id": "A083",
+    "artist_name": "Vesper Crowe",
+    "genre": "indie",
+    "primary_country": "Australia",
+    "catalog_size": 15,
+    "debut_date": "2020-05-22",
+    "trailing_12mo_avg_daily_streams": 345701,
+    "composite_score": 29.4,
+    "catalog_trajectory_pct": -0.742,
+    "trajectory_label": "Declining",
+    "scores": {
+      "catalog_trajectory": 25.0,
+      "catalog_stability": 10.0,
+      "audience_health": 20.0,
+      "new_release_perf": 24.0,
+      "career_runway": 56.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Strong"
+    },
+    "rank": 90
+  },
+  {
+    "artist_id": "A067",
+    "artist_name": "Iver Roan",
+    "genre": "country",
+    "primary_country": "UK",
+    "catalog_size": 33,
+    "debut_date": "2022-04-19",
+    "trailing_12mo_avg_daily_streams": 64740,
+    "composite_score": 28.2,
+    "catalog_trajectory_pct": -2.606,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 9.0,
+      "catalog_stability": 14.0,
+      "audience_health": 10.0,
+      "new_release_perf": 15.0,
+      "career_runway": 99.0,
+      "market_quality": 90.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 91
+  },
+  {
+    "artist_id": "A096",
+    "artist_name": "Wyn Black",
+    "genre": "hip-hop",
+    "primary_country": "Australia",
+    "catalog_size": 51,
+    "debut_date": "2020-10-05",
+    "trailing_12mo_avg_daily_streams": 61663,
+    "composite_score": 26.4,
+    "catalog_trajectory_pct": -2.675,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 7.0,
+      "catalog_stability": 13.0,
+      "audience_health": 12.5,
+      "new_release_perf": 32.0,
+      "career_runway": 68.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 92
+  },
+  {
+    "artist_id": "A049",
+    "artist_name": "Rhea Quill",
+    "genre": "country",
+    "primary_country": "Australia",
+    "catalog_size": 49,
+    "debut_date": "2022-02-12",
+    "trailing_12mo_avg_daily_streams": 28900,
+    "composite_score": 24.2,
+    "catalog_trajectory_pct": -2.847,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 1.0,
+      "catalog_stability": 12.0,
+      "audience_health": 7.5,
+      "new_release_perf": 17.0,
+      "career_runway": 95.0,
+      "market_quality": 80.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Strong"
+    },
+    "rank": 93
+  },
+  {
+    "artist_id": "A010",
+    "artist_name": "Kova Halsey",
+    "genre": "indie",
+    "primary_country": "Canada",
+    "catalog_size": 23,
+    "debut_date": "2020-09-24",
+    "trailing_12mo_avg_daily_streams": 42736,
+    "composite_score": 23.9,
+    "catalog_trajectory_pct": -2.72,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 5.0,
+      "catalog_stability": 21.0,
+      "audience_health": 12.5,
+      "new_release_perf": 10.0,
+      "career_runway": 67.0,
+      "market_quality": 78.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Moderate",
+      "market_quality": "Moderate"
+    },
+    "rank": 94
+  },
+  {
+    "artist_id": "A037",
+    "artist_name": "Tenn Crowe",
+    "genre": "hip-hop",
+    "primary_country": "Spain",
+    "catalog_size": 59,
+    "debut_date": "2018-03-23",
+    "trailing_12mo_avg_daily_streams": 76808,
+    "composite_score": 23.9,
+    "catalog_trajectory_pct": -2.542,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 10.0,
+      "catalog_stability": 18.0,
+      "audience_health": 18.5,
+      "new_release_perf": 43.0,
+      "career_runway": 19.0,
+      "market_quality": 58.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Developing",
+      "career_runway": "Weak",
+      "market_quality": "Developing"
+    },
+    "rank": 95
+  },
+  {
+    "artist_id": "A090",
+    "artist_name": "Wren Vey",
+    "genre": "afrobeats",
+    "primary_country": "Germany",
+    "catalog_size": 57,
+    "debut_date": "2020-07-17",
+    "trailing_12mo_avg_daily_streams": 71633,
+    "composite_score": 23.5,
+    "catalog_trajectory_pct": -2.76,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 3.0,
+      "catalog_stability": 20.0,
+      "audience_health": 14.0,
+      "new_release_perf": 9.0,
+      "career_runway": 61.0,
+      "market_quality": 85.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Moderate",
+      "market_quality": "Strong"
+    },
+    "rank": 96
+  },
+  {
+    "artist_id": "A098",
+    "artist_name": "Geo Brand",
+    "genre": "electronic",
+    "primary_country": "Canada",
+    "catalog_size": 30,
+    "debut_date": "2018-02-03",
+    "trailing_12mo_avg_daily_streams": 63276,
+    "composite_score": 20.8,
+    "catalog_trajectory_pct": -2.662,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 8.0,
+      "catalog_stability": 23.0,
+      "audience_health": 12.5,
+      "new_release_perf": 14.0,
+      "career_runway": 18.0,
+      "market_quality": 78.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 97
+  },
+  {
+    "artist_id": "A073",
+    "artist_name": "Luna Frost",
+    "genre": "pop",
+    "primary_country": "Nigeria",
+    "catalog_size": 35,
+    "debut_date": "2020-03-23",
+    "trailing_12mo_avg_daily_streams": 68146,
+    "composite_score": 20.2,
+    "catalog_trajectory_pct": -2.731,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 4.0,
+      "catalog_stability": 17.0,
+      "audience_health": 14.0,
+      "new_release_perf": 19.0,
+      "career_runway": 52.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Developing",
+      "market_quality": "Developing"
+    },
+    "rank": 98
+  },
+  {
+    "artist_id": "A045",
+    "artist_name": "Otis Granger",
+    "genre": "afrobeats",
+    "primary_country": "Nigeria",
+    "catalog_size": 23,
+    "debut_date": "2022-01-30",
+    "trailing_12mo_avg_daily_streams": 41226,
+    "composite_score": 19.6,
+    "catalog_trajectory_pct": -2.789,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 2.0,
+      "catalog_stability": 11.0,
+      "audience_health": 8.5,
+      "new_release_perf": 6.0,
+      "career_runway": 93.0,
+      "market_quality": 50.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Strong",
+      "market_quality": "Developing"
+    },
+    "rank": 99
+  },
+  {
+    "artist_id": "A061",
+    "artist_name": "Nova Crowe",
+    "genre": "afrobeats",
+    "primary_country": "Mexico",
+    "catalog_size": 29,
+    "debut_date": "2018-12-01",
+    "trailing_12mo_avg_daily_streams": 44035,
+    "composite_score": 18.4,
+    "catalog_trajectory_pct": -2.702,
+    "trajectory_label": "Falling",
+    "scores": {
+      "catalog_trajectory": 6.0,
+      "catalog_stability": 16.0,
+      "audience_health": 12.5,
+      "new_release_perf": 16.0,
+      "career_runway": 28.0,
+      "market_quality": 60.0
+    },
+    "score_labels": {
+      "catalog_trajectory": "Weak",
+      "catalog_stability": "Weak",
+      "audience_health": "Weak",
+      "new_release_perf": "Weak",
+      "career_runway": "Weak",
+      "market_quality": "Moderate"
+    },
+    "rank": 100
+  }
+]
