@@ -247,7 +247,13 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
       {/* Divider + header */}
       <div className="border-t border-zinc-800 pt-6 sm:pt-8 flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h2 className="text-sm font-semibold text-zinc-300">Deal Projection</h2>
+          <div className="flex items-center gap-1.5">
+            <h2 className="text-sm font-semibold text-zinc-300">Deal Projection</h2>
+            <InfoTooltip
+              direction="down"
+              content={`Base is the expected outcome — built on this artist's observed catalog growth rate and your configured deal inputs. Best shifts that growth rate upward and amplifies new-release peaks, reflecting a favourable streaming environment. Worst does the opposite: catalog growth slows or turns negative and releases underperform. The spread between Best and Worst is determined by catalog stability (${anchors.catalogStabilityScore.toFixed(0)}/100) — a consistent streaming history produces a tight band; an erratic one produces a wide spread.`}
+            />
+          </div>
           <p className="text-xs text-zinc-600 mt-0.5">
             Confidence band width driven by catalog stability ({anchors.catalogStabilityScore.toFixed(0)}/100)
           </p>

@@ -1,8 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useDealStore, DEFAULT_PARAMS, type DealParams } from "@/store/deal"
+import { fmtUsd } from "@/lib/format"
 import { InfoTooltip } from "@/components/InfoTooltip"
+import { optimizeDeal, DEFAULT_CONSTRAINTS, type OptimizeConstraints } from "@/lib/optimizeDeal"
+import type { ArtistAnchors } from "@/types/deal"
 
 // ─── Shared input primitives ──────────────────────────────────────────────────
 
@@ -147,11 +150,83 @@ function SectionHeader({ label }: { label: string }) {
   )
 }
 
+// ─── Constraint input primitives ─────────────────────────────────────────────
+
+const CONSTRAINT_INPUT_CLS =
+  "w-16 px-2 py-1 rounded bg-zinc-800 border border-zinc-700 text-xs text-zinc-100 " +
+  "tabular-nums text-right focus:outline-none focus:border-zinc-500 transition-colors " +
+  "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+
+function ConstraintRow({
+  label,
+  unit,
+  children,
+}: {
+  label:    string
+  unit?:    string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex items-center gap-2 py-1.5 border-b border-zinc-700/40 last:border-0">
+      <span className="flex-1 text-xs text-zinc-500 truncate">{label}</span>
+      <div className="flex items-center gap-1.5 shrink-0">
+        {children}
+        {unit && <span className="text-xs text-zinc-600 w-10 text-left">{unit}</span>}
+      </div>
+    </div>
+  )
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export function DealConfigurator() {
+export function DealConfigurator({
+  anchors,
+  initialConstraints = DEFAULT_CONSTRAINTS,
+  paramDefaults = {},
+}: {
+  anchors:             ArtistAnchors
+  initialConstraints?: OptimizeConstraints
+  paramDefaults?:      Partial<DealParams>
+}) {
   const resetParams = useDealStore((s) => s.resetParams)
+  const setParams   = useDealStore((s) => s.setParams)
   const params      = useDealStore((s) => s.params)
+
+  // Optimizer UI state
+  const [showConstraints, setShowConstraints] = useState(false)
+  const [constraints,     setConstraints]     = useState<OptimizeConstraints>(initialConstraints)
+  const [optimized,       setOptimized]       = useState(false)
+  const [noSolution,      setNoSolution]      = useState(false)
+
+  // Tracks whether the most recent params change came from the optimizer.
+  // Prevents the params watcher below from immediately clearing the pill.
+  const justOptimized = useRef(false)
+
+  // Clear the "Optimized" pill whenever the user manually edits any param.
+  useEffect(() => {
+    if (justOptimized.current) {
+      justOptimized.current = false
+      return
+    }
+    if (optimized) setOptimized(false)
+  }, [params]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function setConstraint<K extends keyof OptimizeConstraints>(key: K, value: number) {
+    setConstraints((c) => ({ ...c, [key]: value }))
+  }
+
+  function handleOptimize() {
+    setNoSolution(false)
+    const result = optimizeDeal(params, anchors, constraints)
+    if (result === null) {
+      setNoSolution(true)
+      setOptimized(false)
+    } else {
+      justOptimized.current = true
+      setParams(result)
+      setOptimized(true)
+    }
+  }
 
   // Guard: delivery window must not exceed contract term in months
   const maxDeliveryWindow = params.contractTermYears * 12
@@ -161,11 +236,18 @@ export function DealConfigurator() {
 
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
-        <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-          Deal Configurator
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
+            Deal Configurator
+          </p>
+          {optimized && (
+            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-violet-900/60 text-violet-300 border border-violet-700/50">
+              <span className="text-violet-400">✦</span> Optimized
+            </span>
+          )}
+        </div>
         <button
-          onClick={resetParams}
+          onClick={() => { resetParams(paramDefaults); setOptimized(false); setNoSolution(false) }}
           className="text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors"
         >
           Reset
@@ -190,7 +272,7 @@ export function DealConfigurator() {
       <LeverRow
         label="Marketing Budget"
         unit="$K"
-        hint="Additional spend committed at deal close. Also added to the recoupment pool."
+        hint="Spend committed at deal close. Added to the recoupment pool and drives two revenue effects (log-scaled, diminishing returns): (1) catalog baseline lift — sustained visibility from editorial placements and algorithmic momentum (+15% sensitivity); (2) release peak lift — larger launch spikes from playlist pitching and promotional campaigns (+30% sensitivity). Reference point: $200K."
       >
         <DollarInput paramKey="marketingBudgetUsd" minK={0} maxK={5_000} stepK={25} />
       </LeverRow>
@@ -295,8 +377,130 @@ export function DealConfigurator() {
       <div className="mt-4 rounded-md bg-zinc-800/50 px-3 py-2.5 flex items-center justify-between">
         <span className="text-xs text-zinc-500">Total Investment</span>
         <span className="text-sm font-semibold text-zinc-200 tabular-nums">
-          ${((params.advanceUsd + params.marketingBudgetUsd) / 1_000).toFixed(0)}K
+          {fmtUsd(params.advanceUsd + params.marketingBudgetUsd)}
         </span>
+      </div>
+
+      {/* ── Optimizer ────────────────────────────────────────────────────── */}
+
+      {/* Constraint panel — revealed by chevron */}
+      {showConstraints && (
+        <div className="mt-3 rounded-md border border-zinc-700/60 bg-zinc-800/30 px-3 py-2">
+
+          {/* Label constraints */}
+          <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mb-0.5">
+            Label Constraints
+          </p>
+
+          <ConstraintRow label="Max Investment" unit="$K">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.maxInvestmentK}
+              min={100} max={10_000} step={100}
+              onChange={(e) => setConstraint("maxInvestmentK", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          <ConstraintRow label="Max Marketing" unit="$K">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.maxMarketingK}
+              min={0} max={5_000} step={50}
+              onChange={(e) => setConstraint("maxMarketingK", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          <ConstraintRow label="Break-even by (base)" unit="months">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.breakEvenByMonth}
+              min={1} max={120} step={1}
+              onChange={(e) => setConstraint("breakEvenByMonth", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          <ConstraintRow label="Max contract term" unit="years">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.maxContractYears}
+              min={1} max={10} step={1}
+              onChange={(e) => setConstraint("maxContractYears", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          {/* Artist floor */}
+          <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mt-3 mb-0.5">
+            Artist Floor
+          </p>
+
+          <ConstraintRow label="Min advance" unit="$K">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.minAdvanceK}
+              min={0} max={5_000} step={50}
+              onChange={(e) => setConstraint("minAdvanceK", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          <ConstraintRow label="Artist post-recoup ≥" unit="%">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.minArtistPostRecoupPct}
+              min={0} max={100} step={5}
+              onChange={(e) => setConstraint("minArtistPostRecoupPct", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          <ConstraintRow label="Max recoupment rate" unit="%">
+            <input
+              type="number"
+              className={CONSTRAINT_INPUT_CLS}
+              value={constraints.maxRecoupmentRatePct}
+              min={0} max={100} step={5}
+              onChange={(e) => setConstraint("maxRecoupmentRatePct", Number(e.target.value))}
+            />
+          </ConstraintRow>
+
+          {/* Reset constraints link */}
+          <button
+            onClick={() => setConstraints(initialConstraints)}
+            className="mt-2.5 text-[10px] text-zinc-700 hover:text-zinc-500 transition-colors"
+          >
+            Reset to defaults
+          </button>
+        </div>
+      )}
+
+      {/* No-solution feedback */}
+      {noSolution && (
+        <p className="mt-3 text-[11px] text-amber-500/80 text-center">
+          No feasible solution found — try relaxing the constraints.
+        </p>
+      )}
+
+      {/* Split button: Optimize | ⌄ */}
+      <div className="mt-3 flex rounded-md overflow-hidden border border-zinc-700">
+        <button
+          onClick={handleOptimize}
+          className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-xs font-medium text-zinc-200 transition-colors"
+        >
+          <span className="text-violet-400">✦</span>
+          Optimize Deal Structure
+        </button>
+        <div className="w-px bg-zinc-700 shrink-0" />
+        <button
+          onClick={() => setShowConstraints((s) => !s)}
+          className="px-3 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-500 hover:text-zinc-300 transition-colors text-[10px]"
+          aria-label="Toggle optimization constraints"
+        >
+          {showConstraints ? "▲" : "▼"}
+        </button>
       </div>
 
     </div>

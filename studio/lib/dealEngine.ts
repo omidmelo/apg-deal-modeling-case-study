@@ -283,25 +283,86 @@ function scenarioBand(anchors: ArtistAnchors, basePeak: number): {
   }
 }
 
+// ─── Marketing lift ────────────────────────────────────────────────────────────
+
+/**
+ * Reference marketing budget for lift scaling.
+ * At this spend level the lift factor equals ln(2) ≈ 0.693.
+ */
+const MARKETING_REFERENCE_USD = 200_000
+
+/**
+ * Catalog baseline sensitivity to marketing spend.
+ * At the reference budget: +10.4% baseline lift.
+ * At $500K: +18.8%. At $1M: +26.9%.
+ */
+const CATALOG_LIFT_ALPHA = 0.15
+
+/**
+ * Release peak sensitivity to marketing spend.
+ * At the reference budget: +20.8% peak lift.
+ * At $500K: +37.6%. At $1M: +53.8%.
+ */
+const PEAK_LIFT_ALPHA = 0.30
+
+/**
+ * Apply marketing spend effects to artist anchors and peak multiplier.
+ *
+ * Marketing budget affects two things:
+ *   1. Catalog baseline (avgDailyStreams) — sustained visibility from
+ *      editorial placements, sync, and algorithmic momentum.
+ *   2. Release peak multiplier — larger launch spike from playlist pitching,
+ *      social ads, and promotional campaigns around new releases.
+ *
+ * Both scale logarithmically (diminishing returns on additional spend):
+ *   lift = ln(marketingBudgetUsd / reference + 1)
+ *   catalogFactor = 1 + CATALOG_LIFT_ALPHA × lift
+ *   peakFactor    = 1 + PEAK_LIFT_ALPHA    × lift
+ *
+ * At $0 spend the lift is exactly zero — no penalty, no bonus.
+ * Trajectory and decay half-life are artist-intrinsic and stay unchanged.
+ */
+function applyMarketingLift(
+  inputs:  DealInputs,
+  anchors: ArtistAnchors,
+): { liftedAnchors: ArtistAnchors; liftedPeak: number } {
+  if (inputs.marketingBudgetUsd <= 0) {
+    return { liftedAnchors: anchors, liftedPeak: inputs.peakMultiplier }
+  }
+  const lift = Math.log(inputs.marketingBudgetUsd / MARKETING_REFERENCE_USD + 1)
+  return {
+    liftedAnchors: {
+      ...anchors,
+      avgDailyStreams: anchors.avgDailyStreams * (1 + CATALOG_LIFT_ALPHA * lift),
+    },
+    liftedPeak: inputs.peakMultiplier * (1 + PEAK_LIFT_ALPHA * lift),
+  }
+}
+
 // ─── Public API ───────────────────────────────────────────────────────────────
 
 /**
  * Run a full deal projection (base + best + worst scenarios).
+ *
+ * Marketing spend is applied as a lift to the catalog baseline and release
+ * peak before projecting all three scenarios.
  *
  * @param inputs   - Deal levers from the configurator
  * @param anchors  - Pre-computed artist metrics from the artist JSON
  * @returns        - DealProjection with three ScenarioResults and metadata
  */
 export function runDeal(inputs: DealInputs, anchors: ArtistAnchors): DealProjection {
+  const { liftedAnchors, liftedPeak } = applyMarketingLift(inputs, anchors)
+
   const { bestTraj, worstTraj, bestPeak, worstPeak } =
-    scenarioBand(anchors, inputs.peakMultiplier)
+    scenarioBand(liftedAnchors, liftedPeak)
 
   return {
-    base:  projectScenario(inputs, anchors, anchors.catalogTrajectoryPct, inputs.peakMultiplier),
-    best:  projectScenario(inputs, anchors, bestTraj,  bestPeak),
-    worst: projectScenario(inputs, anchors, worstTraj, worstPeak),
+    base:  projectScenario(inputs, liftedAnchors, liftedAnchors.catalogTrajectoryPct, liftedPeak),
+    best:  projectScenario(inputs, liftedAnchors, bestTraj,  bestPeak),
+    worst: projectScenario(inputs, liftedAnchors, worstTraj, worstPeak),
     inputs,
-    anchors,
+    anchors,  // original (pre-lift) anchors stored for reference
   }
 }
 

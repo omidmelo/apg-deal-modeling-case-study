@@ -6,7 +6,13 @@ import { useState, useRef, useEffect } from "react"
  * Tap/click to toggle on touch devices; hover on desktop.
  * Closes when tapping/clicking outside.
  */
-export function InfoTooltip({ content }: { content: string }) {
+export function InfoTooltip({
+  content,
+  direction = "up",
+}: {
+  content:    string
+  direction?: "up" | "down"
+}) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -39,7 +45,12 @@ export function InfoTooltip({ content }: { content: string }) {
         ⓘ
       </button>
       {open && (
-        <div className="absolute bottom-full left-0 mb-2 z-30 w-56 max-w-[calc(100vw-3rem)] rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl pointer-events-none">
+        <div
+          className={[
+            "absolute z-30 w-64 max-w-[calc(100vw-3rem)] rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl pointer-events-none",
+            direction === "up"   ? "bottom-full left-0 mb-2" : "top-full left-0 mt-2",
+          ].join(" ")}
+        >
           {content}
         </div>
       )}

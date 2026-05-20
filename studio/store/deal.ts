@@ -76,8 +76,9 @@ interface DealStore {
   scenario: Scenario
 
   setParam:    <K extends keyof DealParams>(key: K, value: DealParams[K]) => void
+  setParams:   (partial: Partial<DealParams>) => void
   setScenario: (s: Scenario) => void
-  resetParams: () => void
+  resetParams: (overrides?: Partial<DealParams>) => void
 }
 
 export const useDealStore = create<DealStore>((set) => ({
@@ -87,7 +88,10 @@ export const useDealStore = create<DealStore>((set) => ({
   setParam: (key, value) =>
     set((state) => ({ params: { ...state.params, [key]: value } })),
 
+  setParams: (partial) =>
+    set((state) => ({ params: { ...state.params, ...partial } })),
+
   setScenario: (scenario) => set({ scenario }),
 
-  resetParams: () => set({ params: { ...DEFAULT_PARAMS } }),
+  resetParams: (overrides) => set({ params: { ...DEFAULT_PARAMS, ...overrides } }),
 }))

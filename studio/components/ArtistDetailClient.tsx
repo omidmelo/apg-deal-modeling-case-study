@@ -1,9 +1,11 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import Link from "next/link"
 import { DealConfigurator } from "@/components/DealConfigurator"
 import { DealResults }      from "@/components/DealResults"
+import { useDealStore }     from "@/store/deal"
+import { getAdvanceTier, DEFAULT_CONSTRAINTS, type OptimizeConstraints } from "@/lib/optimizeDeal"
 import type { ArtistAnchors } from "@/types/deal"
 import {
   AreaChart,
@@ -193,6 +195,25 @@ function ScoreDimension({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
+  const resetParams   = useDealStore((s) => s.resetParams)
+  const setScenario   = useDealStore((s) => s.setScenario)
+
+  // Derive artist-specific advance tier from stream volume
+  const advanceTier = getAdvanceTier(artist.meta.trailing_12mo_avg_daily_streams)
+
+  // Artist-specific optimizer constraints seeded from the advance tier
+  const artistConstraints: OptimizeConstraints = {
+    ...DEFAULT_CONSTRAINTS,
+    minAdvanceK:    advanceTier.minK,
+    maxInvestmentK: advanceTier.maxK + 300,  // max advance + $300K marketing headroom
+  }
+
+  // Reset deal params and scenario whenever the artist changes
+  useEffect(() => {
+    resetParams({ advanceUsd: advanceTier.defaultK * 1_000 })
+    setScenario("base")
+  }, [artist.meta.artist_id]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const {
     meta,
     composite_score,
@@ -646,8 +667,14 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 items-start">
 
           {/* Configurator — sticky on desktop, normal flow on mobile */}
+          {/* key forces remount on artist change, resetting all local UI state */}
           <div className="sm:sticky sm:top-20 h-fit">
-            <DealConfigurator />
+            <DealConfigurator
+              key={artist.meta.artist_id}
+              anchors={anchors}
+              initialConstraints={artistConstraints}
+              paramDefaults={{ advanceUsd: advanceTier.defaultK * 1_000 }}
+            />
           </div>
 
           {/* Results — scrolls freely on the right */}
