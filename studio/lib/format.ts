@@ -11,9 +11,11 @@ export function fmtTrajectory(pct: number): string {
   return `${pct >= 0 ? "+" : ""}${pct.toFixed(2)}%`
 }
 
-/** Format a USD amount: 500000 → "$500K" */
+/** Format a USD amount: 500000 → "$500K", -1200000 → "-$1.2M" */
 export function fmtUsd(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`
-  return `$${n}`
+  const sign = n < 0 ? "-" : ""
+  const abs  = Math.abs(n)
+  if (abs >= 1_000_000) return `${sign}$${(abs / 1_000_000).toFixed(1)}M`
+  if (abs >= 1_000)     return `${sign}$${(abs / 1_000).toFixed(0)}K`
+  return `${sign}$${abs.toFixed(0)}`
 }

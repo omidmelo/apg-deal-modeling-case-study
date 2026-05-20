@@ -1,7 +1,10 @@
 "use client"
 
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import Link from "next/link"
+import { DealConfigurator } from "@/components/DealConfigurator"
+import { DealResults }      from "@/components/DealResults"
+import type { ArtistAnchors } from "@/types/deal"
 import {
   AreaChart,
   Area,
@@ -96,7 +99,7 @@ function ChartCard({
         <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">{title}</p>
         {hint && (
           <div className="relative group">
-            <span className="text-zinc-700 hover:text-zinc-500 cursor-help text-xs leading-none select-none">
+            <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">
               ⓘ
             </span>
             <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20
@@ -182,7 +185,7 @@ function ScoreDimension({
           {label}
           {hint && (
             <div className="relative group">
-              <span className="text-zinc-700 hover:text-zinc-500 cursor-help text-xs leading-none select-none">ⓘ</span>
+              <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">ⓘ</span>
               <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-72 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
                 {hint}
               </div>
@@ -220,6 +223,16 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
 
   // Debut year from ISO date string
   const debutYear = meta.debut_date ? meta.debut_date.slice(0, 4) : "—"
+
+  // Artist anchors passed to the deal engine
+  const anchors: ArtistAnchors = {
+    avgDailyStreams:        meta.trailing_12mo_avg_daily_streams,
+    catalogTrajectoryPct:  catalog_trajectory_pct,
+    catalogStabilityScore: scores.catalog_stability,
+  }
+
+  // Tab state
+  const [activeTab, setTab] = useState<"analysis" | "deal">("analysis")
 
   // Build trajectory chart data with computed linear trend line
   const trajectoryData = useMemo(() => {
@@ -316,10 +329,26 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
         </div>
       </div>
 
-      {/* Body: charts left, deal placeholder right */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6">
+      {/* Tab nav */}
+      <div className="flex gap-1 mb-6 border-b border-zinc-800">
+        {(["analysis", "deal"] as const).map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setTab(tab)}
+            className={[
+              "px-4 py-2 text-sm font-medium transition-colors -mb-px border-b-2",
+              activeTab === tab
+                ? "text-zinc-100 border-zinc-300"
+                : "text-zinc-600 border-transparent hover:text-zinc-400",
+            ].join(" ")}
+          >
+            {tab === "analysis" ? "Artist Analysis" : "Deal Model"}
+          </button>
+        ))}
+      </div>
 
-        {/* ── Left column ─────────────────────────────────────────── */}
+      {/* ── Analysis tab ─────────────────────────────────────────────────── */}
+      {activeTab === "analysis" && (
         <div className="space-y-4">
 
           {/* 2×2 chart grid */}
@@ -627,37 +656,26 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
           </div>
 
         </div>
+      )}
 
-        {/* ── Right column: deal configurator placeholder ───────────── */}
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-5 h-fit sticky top-20">
-          <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-1">
-            Deal Configurator
-          </p>
-          <p className="text-xs text-zinc-600 mb-6">Phase 2 — coming next</p>
+      {/* ── Deal Model tab ────────────────────────────────────────────────── */}
+      {activeTab === "deal" && (
+        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 items-start">
 
-          <div className="space-y-3">
-            {[
-              "Deal multiple (NPS)",
-              "Recoup rate",
-              "Label share",
-              "Advance amount",
-              "Deal term (years)",
-              "Growth assumption",
-            ].map((label) => (
-              <div key={label} className="flex items-center justify-between py-2 border-b border-zinc-800/60">
-                <span className="text-xs text-zinc-600">{label}</span>
-                <span className="text-xs text-zinc-800 font-mono">— —</span>
-              </div>
-            ))}
+          {/* Configurator — sticky within the deal section */}
+          <div className="sticky top-20 h-fit">
+            <DealConfigurator />
           </div>
 
-          <div className="mt-6 rounded-md bg-zinc-800/40 p-3 text-center">
-            <p className="text-xs text-zinc-700">Projected NPV · IRR · Break-even</p>
-            <p className="text-xs text-zinc-800 mt-1">available in Phase 2</p>
+          {/* Results — scrolls freely on the right */}
+          <div>
+            <DealResults anchors={anchors} />
           </div>
+
         </div>
+      )}
 
-      </div>
     </div>
   )
 }
+

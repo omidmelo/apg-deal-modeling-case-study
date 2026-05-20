@@ -127,7 +127,7 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
                 <span className="flex items-center gap-1 text-xs text-zinc-400">
                   {SCORE_DIMENSION_LABELS[key]}
                   <div className="relative group">
-                    <span className="text-zinc-700 hover:text-zinc-500 cursor-help text-xs leading-none select-none">ⓘ</span>
+                    <span className="text-zinc-500 hover:text-zinc-300 cursor-help text-xs leading-none select-none">ⓘ</span>
                     <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block z-20 w-72 rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl">
                       {hint}
                     </div>
