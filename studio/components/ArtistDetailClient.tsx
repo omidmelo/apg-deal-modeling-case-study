@@ -37,17 +37,17 @@ const SCORE_LABELS: Record<keyof ScoreBreakdown, string> = {
 
 const SCORE_HINTS: Record<keyof ScoreBreakdown, string> = {
   catalog_trajectory:
-    "Percentile rank (0–100) across the roster. Raw metric: % change per month in catalog streams, derived from a linear regression on the 30-day rolling mean over the last 24 months. Weight: 25% of composite score.",
+    "How fast catalog streams are growing month-over-month, scored relative to the rest of the roster (0 = slowest grower, 100 = fastest). Based on a trend line fitted to the last 24 months of data. Worth 25% of the composite score.",
   catalog_stability:
-    "Percentile rank (0–100) across the roster. Raw metric: inverse coefficient of variation of monthly catalog streams over 24 months — low variance = high stability = predictable royalty cash flow. Weight: 20%.",
+    "How consistent the stream numbers are month to month, scored relative to the roster (0 = most volatile, 100 = most consistent). Stable streams mean more predictable revenue — important for deal forecasting accuracy. Worth 20% of the composite score.",
   audience_health:
-    "Percentile rank (0–100) across the roster. Average of two sub-ranks: (1) growth rate of monthly listeners over the last 12 months (first half vs second half), and (2) absolute listener level. Weight: 20%.",
+    "Whether the artist is attracting new listeners, not just replaying to existing fans. Combines recent listener growth rate with absolute listener level, scored relative to the roster. Worth 20% of the composite score.",
   new_release_perf:
-    "Percentile rank (0–100) across the roster. Raw metric: peak 30-day average of new-release streams divided by average catalog streams over 24 months — measures how strongly new releases spike relative to the catalog baseline. Weight: 15%.",
+    "How big of a streaming spike new releases generate relative to the catalog baseline, scored relative to the roster. A high score means new music significantly accelerates stream volume — which speeds up advance payback. Worth 15% of the composite score.",
   career_runway:
-    "Percentile rank (0–100) across the roster. Raw metric: 1 / (1 + career years since debut). Newer artists rank higher — more growth runway ahead. Weight: 10%.",
+    "How early the artist is in their career, scored relative to the roster. Earlier-career artists score higher — more room to grow means more upside potential over a multi-year deal. Worth 10% of the composite score.",
   market_quality:
-    "Absolute tier score (not a percentile). Based on the artist's primary market country and its DSP royalty yield (US = 100, UK = 90, Germany = 85 … Nigeria = 50). Not relative to the roster. Weight: 10%.",
+    "How lucrative the artist's primary listener market is. Streaming royalty rates vary significantly by country — a US audience pays roughly 2–3× more per stream than listeners in lower-tier markets. Scored on an absolute scale (not relative to the roster). Worth 10% of the composite score.",
 }
 
 // ─── Shared chart config ───────────────────────────────────────────────────────
@@ -322,7 +322,13 @@ export function ArtistDetailClient({
             </p>
           </div>
           <div>
-            <p className="text-xs text-zinc-600 mb-0.5">Trajectory</p>
+            <div className="flex items-center gap-1 mb-0.5 justify-end">
+              <p className="text-xs text-zinc-600">Trajectory</p>
+              <InfoTooltip
+                content="Monthly % change in catalog streams, based on a trend line fitted to the last 24 months. Positive = growing on its own; negative = slowly fading. Excludes new-release spikes — this is purely organic catalog momentum."
+                direction="down"
+              />
+            </div>
             <p
               className="text-xl font-bold tabular-nums leading-none"
               style={{ color: trajectoryColor }}
@@ -332,7 +338,7 @@ export function ArtistDetailClient({
             <p className="text-xs text-zinc-600 mt-0.5">{trajectory_label}</p>
           </div>
           <div>
-            <p className="text-xs text-zinc-600 mb-0.5">Streams / day</p>
+            <p className="text-xs text-zinc-600 mb-0.5">Avg streams/day</p>
             <p className="text-xl font-bold text-zinc-100 tabular-nums leading-none">
               {fmtStreams(meta.trailing_12mo_avg_daily_streams)}
             </p>
@@ -368,7 +374,7 @@ export function ArtistDetailClient({
             {/* 1. Total streams */}
             <ChartCard
               title="Total Streams (monthly)"
-              hint="Every play of every track, summed per calendar month. Includes both catalog and new-release streams. One listener playing the same song 50× counts as 50 streams."
+              hint="Every qualifying play of every track, summed per calendar month. Includes both catalog and new-release streams. Platforms typically require at least 30 seconds of playback to count."
             >
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={monthly_history} margin={CHART_MARGIN}>
@@ -454,7 +460,7 @@ export function ArtistDetailClient({
             {/* 3. Catalog vs New Release */}
             <ChartCard
               title="Catalog vs. New Release"
-              hint="Each point is the total streams for that calendar month. Catalog = tracks older than ~6 months at time of measurement. New Release = tracks released in the trailing ~6 months (frontline). Both series share the same zero baseline — values are not stacked."
+              hint="Streams split by age of the music. Catalog = tracks older than ~6 months. New Release = tracks released in the most recent ~6 months. Both series share the same zero baseline — values are not stacked."
             >
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={monthly_history} margin={CHART_MARGIN}>
@@ -521,7 +527,7 @@ export function ArtistDetailClient({
             {/* 4. Follower growth */}
             <ChartCard
               title="Follower Growth"
-              hint="Cumulative platform followers over time. A leading indicator of audience loyalty — followers are more likely to stream new releases on day one, which drives recoupment speed in a deal model."
+              hint="Cumulative platform followers over time. A high and growing follower count signals audience loyalty — core fans are more likely to stream new releases immediately, which tends to produce larger initial spikes in the release schedule."
             >
               <ResponsiveContainer width="100%" height={180}>
                 <AreaChart data={monthly_history} margin={CHART_MARGIN}>
@@ -586,7 +592,7 @@ export function ArtistDetailClient({
                   {...TooltipStyle}
                   formatter={(v: unknown, name: unknown) => [
                     fmtStreams(v as number),
-                    name === "catalog_rolling_30d" ? "30d Rolling Mean" : "Trend",
+                    name === "catalog_rolling_30d" ? "30-day rolling mean" : "Trend",
                   ]}
                   labelFormatter={(v: unknown) => {
                     const s = v as string

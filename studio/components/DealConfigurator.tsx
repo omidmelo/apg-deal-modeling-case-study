@@ -277,7 +277,7 @@ export function DealConfigurator({
       <LeverRow
         label="Advance"
         unit="$K"
-        hint="Upfront cash payment to the artist at deal close. Added to the recoupment pool."
+        hint="Upfront cash payment to the artist at deal close. The artist pays this back over time through their share of royalties."
       >
         <DollarInput paramKey="advanceUsd" minK={0} maxK={10_000} stepK={50} />
       </LeverRow>
@@ -285,7 +285,7 @@ export function DealConfigurator({
       <LeverRow
         label="Marketing Budget"
         unit="$K"
-        hint="Spend committed at deal close. Added to the recoupment pool and drives two revenue effects (log-scaled, diminishing returns): (1) catalog baseline lift — sustained visibility from editorial placements and algorithmic momentum (+15% sensitivity); (2) release peak lift — larger launch spikes from playlist pitching and promotional campaigns (+30% sensitivity). Reference point: $200K."
+        hint="Spend committed at deal close. Added to the total investment the label must recoup. Also lifts revenue in two ways: (1) catalog streams get a sustained boost from editorial placements and platform momentum; (2) new-release peaks get a larger launch spike from playlist pitching. Follows diminishing returns — at the $200K reference level, catalog streams lift ~15% and release peaks lift ~30%; doubling the spend doesn't double the lift."
       >
         <DollarInput paramKey="marketingBudgetUsd" minK={0} maxK={5_000} stepK={25} />
       </LeverRow>
@@ -294,33 +294,33 @@ export function DealConfigurator({
       <SectionHeader label="Revenue Split" />
 
       <LeverRow
-        label="Distribution Fee"
+        label="Admin Fee"
         unit="%"
-        hint="Admin / distribution fee taken off gross royalties before the label/artist split is applied."
+        hint="Label's administrative cut taken off gross royalties before the artist/label split is applied. Covers overhead, distribution, and administration costs."
       >
         <NumInput paramKey="distributionFeePct" min={0} max={30} step={1} />
       </LeverRow>
 
       <LeverRow
-        label="Label Share (pre-recoup)"
+        label="Label Share (pre)"
         unit="%"
-        hint="Label's percentage of net royalties while the advance is still unrecouped. Artist receives the remainder."
+        hint="Label's cut of net royalties while the advance hasn't been paid back yet. The artist keeps the rest."
       >
         <NumInput paramKey="labelSharePreRecoupPct" min={0} max={100} step={5} />
       </LeverRow>
 
       <LeverRow
-        label="Label Share (post-recoup)"
+        label="Label Share (post)"
         unit="%"
-        hint="Label's percentage of net royalties once the advance is fully recouped. Artist receives the remainder."
+        hint="Label's cut of net royalties once the advance has been fully paid back. The artist keeps the rest."
       >
         <NumInput paramKey="labelSharePostRecoupPct" min={0} max={100} step={5} />
       </LeverRow>
 
       <LeverRow
-        label="Recoupment Rate"
+        label="Payback Rate"
         unit="%"
-        hint="Fraction of monthly net royalties applied toward the outstanding advance balance. 100% = all royalties recoup; lower values guarantee the artist a floor before full recoupment."
+        hint="What percentage of each month's royalties goes toward paying back the advance. 100% = all royalties pay down the advance first; lower values guarantee the artist receives some income before the advance is fully paid off."
       >
         <NumInput paramKey="recoupmentRatePct" min={0} max={100} step={5} />
       </LeverRow>
@@ -352,15 +352,15 @@ export function DealConfigurator({
       <LeverRow
         label="Peak Multiplier"
         unit="×"
-        hint="New-release peak size as a multiple of catalog monthly streams at the time of release. e.g. 3× means the release spikes to 3× the current catalog baseline."
+        hint="How large the new-release stream spike is, expressed as a multiple of the catalog's current monthly streams. e.g. 3× means the release adds an extra 3× the catalog baseline on top of existing streams in its peak month (so total streams that month ≈ 4× normal)."
       >
         <NumInput paramKey="peakMultiplier" min={0} max={20} step={0.5} decimals={1} />
       </LeverRow>
 
       <LeverRow
-        label="Decay Half-life"
+        label="Release Decay Half-life"
         unit="months"
-        hint="Months until a new release's stream contribution halves. e.g. 4 months means the spike is 50% of peak after 4 months, 25% after 8."
+        hint="How quickly a new release's streaming spike fades. Measured as months until the spike contribution halves. e.g. 4 months means the extra streams are 50% of peak after 4 months, 25% after 8 months."
       >
         <NumInput paramKey="decayHalfLifeMonths" min={1} max={24} step={1} />
       </LeverRow>
@@ -371,7 +371,7 @@ export function DealConfigurator({
       <LeverRow
         label="Cost of Capital"
         unit="% / yr"
-        hint="Annual discount rate used to compute NPV. Represents the label's hurdle rate — the minimum return required to justify the investment."
+        hint="Discount rate used to compute NPV. Represents the minimum return the label requires — a deal with positive NPV at this rate clears the bar. Standard range is 10–15%."
       >
         <NumInput paramKey="costOfCapitalPct" min={0} max={30} step={0.5} decimals={1} />
       </LeverRow>
@@ -379,7 +379,7 @@ export function DealConfigurator({
       <LeverRow
         label="Royalty Rate"
         unit="$ / stream"
-        hint="Per-stream royalty rate used throughout. Fixed at the industry standard of $0.0035 per stream."
+        hint="Per-stream royalty rate applied to all stream counts. Locked at $0.0035 — a typical blended rate across Spotify, Apple Music, and other platforms."
       >
         <span className="w-20 text-right text-xs text-zinc-600 tabular-nums pr-1">
           $0.0035
@@ -388,7 +388,7 @@ export function DealConfigurator({
 
       {/* Investment summary */}
       <div className="mt-4 rounded-md bg-zinc-800/50 px-3 py-2.5 flex items-center justify-between">
-        <span className="text-xs text-zinc-500">Total Investment</span>
+        <span className="text-xs text-zinc-500">Total Investment <span className="text-zinc-600 font-normal">(advance + marketing)</span></span>
         <span className="text-sm font-semibold text-zinc-200 tabular-nums">
           {fmtUsd(params.advanceUsd + params.marketingBudgetUsd)}
         </span>
@@ -425,7 +425,7 @@ export function DealConfigurator({
             />
           </ConstraintRow>
 
-          <ConstraintRow label="Break-even by (base)" unit="months">
+          <ConstraintRow label="Break-even by (base scenario)" unit="months">
             <input
               type="number"
               className={CONSTRAINT_INPUT_CLS}
@@ -447,7 +447,7 @@ export function DealConfigurator({
 
           {/* Artist floor */}
           <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mt-3 mb-0.5">
-            Artist Floor
+            Artist Minimums
           </p>
 
           <ConstraintRow label="Min advance" unit="$K">
@@ -460,7 +460,7 @@ export function DealConfigurator({
             />
           </ConstraintRow>
 
-          <ConstraintRow label="Artist post-recoup ≥" unit="%">
+          <ConstraintRow label="Artist share (after payback) ≥" unit="%">
             <input
               type="number"
               className={CONSTRAINT_INPUT_CLS}
@@ -470,7 +470,7 @@ export function DealConfigurator({
             />
           </ConstraintRow>
 
-          <ConstraintRow label="Max recoupment rate" unit="%">
+          <ConstraintRow label="Max payback rate" unit="%">
             <input
               type="number"
               className={CONSTRAINT_INPUT_CLS}

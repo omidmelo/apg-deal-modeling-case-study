@@ -34,29 +34,29 @@ const SCORE_DIMENSION_LABELS: Record<keyof ScoreBreakdown, string> = {
 
 const SCORE_HINTS: Record<keyof ScoreBreakdown, string> = {
   catalog_trajectory:
-    "Percentile rank (0–100) across the roster. Raw metric: % change per month in catalog streams, derived from a linear regression on the 30-day rolling mean over the last 24 months. Weight: 25% of composite score.",
+    "How fast catalog streams are growing month-over-month, scored relative to the rest of the roster (0 = slowest grower, 100 = fastest). Based on a trend line fitted to the last 24 months of data. Worth 25% of the composite score.",
   catalog_stability:
-    "Percentile rank (0–100) across the roster. Raw metric: inverse coefficient of variation of monthly catalog streams over 24 months — low variance = high stability = predictable royalty cash flow. Weight: 20%.",
+    "How consistent the stream numbers are month to month, scored relative to the roster (0 = most volatile, 100 = most consistent). Stable streams mean more predictable revenue. Worth 20% of the composite score.",
   audience_health:
-    "Percentile rank (0–100) across the roster. Average of two sub-ranks: (1) growth rate of monthly listeners over the last 12 months (first half vs second half), and (2) absolute listener level. Weight: 20%.",
+    "Whether the artist is attracting new listeners, not just replaying to existing fans. Combines recent listener growth rate with absolute listener level, scored relative to the roster. Worth 20% of the composite score.",
   new_release_perf:
-    "Percentile rank (0–100) across the roster. Raw metric: peak 30-day average of new-release streams divided by average catalog streams over 24 months — measures how strongly new releases spike relative to the catalog baseline. Weight: 15%.",
+    "How big of a streaming spike new releases generate relative to the catalog baseline, scored relative to the roster. A high score means new music significantly accelerates stream volume. Worth 15% of the composite score.",
   career_runway:
-    "Percentile rank (0–100) across the roster. Raw metric: 1 / (1 + career years since debut). Newer artists rank higher — more growth runway ahead. Weight: 10%.",
+    "How early the artist is in their career, scored relative to the roster. Earlier-career artists score higher — more room to grow. Worth 10% of the composite score.",
   market_quality:
-    "Absolute tier score (not a percentile). Based on the artist's primary market country and its DSP royalty yield (US = 100, UK = 90, Germany = 85 … Nigeria = 50). Not relative to the roster. Weight: 10%.",
+    "How lucrative the artist's primary listener market is. A US audience pays roughly 2–3× more per stream than listeners in lower-tier markets. Scored on an absolute scale (not relative to the roster). Worth 10% of the composite score.",
 }
 
 const COLUMNS: { key: SortKey; label: string; align: "left" | "right"; hint?: string }[] = [
   { key: "rank",                            label: "#",               align: "right" },
   { key: "artist_name",                     label: "Artist",          align: "left"  },
   { key: "genre",                           label: "Genre",           align: "left"  },
-  { key: "composite_score",                 label: "Score",           align: "right" },
+  { key: "composite_score",                 label: "Score",           align: "right"  },
   {
     key:   "catalog_trajectory_pct",
     label: "Trajectory",
     align: "right",
-    hint:  "% change per month in catalog streams. Raw metric: slope of a linear regression on the 30-day rolling mean over the trailing 24 months, expressed as a percentage of the starting baseline. Independent of new-release activity — measures organic catalog momentum only.",
+    hint:  "How fast the artist's catalog streams are growing month-over-month, based on a trend line fitted to the last 24 months. Positive = growing on its own; negative = slowly fading. Excludes new-release spikes — this is purely organic catalog momentum.",
   },
   { key: "trailing_12mo_avg_daily_streams", label: "Avg streams/day", align: "right" },
 ]
@@ -134,7 +134,7 @@ function TopRecommendationCard({
             <p className="text-4xl sm:text-5xl font-bold text-green-400 tabular-nums leading-none">
               {fmtUsd(optimizedNpv)}
             </p>
-            <p className="text-xs text-zinc-500 mt-1">at 12% hurdle</p>
+            <p className="text-xs text-zinc-500 mt-1">at 12% cost of capital</p>
           </div>
           <div>
             <p className="text-xs text-zinc-500 mb-1">Score</p>
@@ -267,7 +267,7 @@ function TopRecommendationCard({
                 { label: "Marketing",  value: fmtUsd(memo.deal.marketingK * 1_000)                               },
                 { label: "Investment", value: `${fmtUsd(memo.deal.totalInvestmentK * 1_000)} total`              },
                 { label: "Split",      value: `${memo.deal.labelSharePrePct}/${memo.deal.labelSharePostPct}`      },
-                { label: "Recoupment", value: `${memo.deal.recoupmentRatePct}%`                                  },
+                { label: "Payback Rate", value: `${memo.deal.recoupmentRatePct}%`                               },
               ].map(({ label, value }) => (
                 <div key={label} className="flex flex-col px-3 py-2 rounded-md bg-zinc-800/60 border border-zinc-700/40">
                   <span className="text-[10px] text-zinc-600 uppercase tracking-wider">{label}</span>
@@ -275,7 +275,7 @@ function TopRecommendationCard({
                 </div>
               ))}
             </div>
-            <p className="text-[11px] text-zinc-600 mt-2">Split shown as label share pre-recoup / post-recoup.</p>
+            <p className="text-[11px] text-zinc-600 mt-2">Split = label's % of royalties — first number applies until the advance is paid back, second number applies after.</p>
           </div>
 
           {/* Projected returns */}
@@ -300,7 +300,7 @@ function TopRecommendationCard({
             </div>
             <div className="flex gap-6 text-xs text-zinc-500">
               <span>Break-even <span className="text-zinc-300 font-medium">{fmtMonth(memo.returns.breakEvenMonth)}</span></span>
-              <span>Recoupment <span className="text-zinc-300 font-medium">{fmtMonth(memo.returns.recoupmentMonth)}</span></span>
+              <span>Advance paid back <span className="text-zinc-300 font-medium">{fmtMonth(memo.returns.recoupmentMonth)}</span></span>
               <span>ROI <span className="text-zinc-300 font-medium">{memo.returns.totalRoiPct.toFixed(0)}%</span></span>
             </div>
           </div>

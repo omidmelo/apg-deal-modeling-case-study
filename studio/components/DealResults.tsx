@@ -54,11 +54,13 @@ function KpiCard({
   label,
   value,
   sub,
+  hint,
   sentiment,
 }: {
   label:     string
   value:     string
   sub?:      string
+  hint?:     string
   sentiment: "positive" | "negative" | "neutral"
 }) {
   const valueColor =
@@ -68,9 +70,12 @@ function KpiCard({
 
   return (
     <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-3 sm:px-4">
-      <p className="text-[10px] font-medium text-zinc-600 uppercase tracking-wider mb-1.5">
-        {label}
-      </p>
+      <div className="flex items-center gap-1 mb-1.5">
+        <p className="text-[10px] font-medium text-zinc-600 uppercase tracking-wider">
+          {label}
+        </p>
+        {hint && <InfoTooltip content={hint} direction="down" />}
+      </div>
       <p className={`text-lg sm:text-xl font-bold tabular-nums leading-none ${valueColor}`}>
         {value}
       </p>
@@ -251,11 +256,11 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
             <h2 className="text-sm font-semibold text-zinc-300">Deal Projection</h2>
             <InfoTooltip
               direction="down"
-              content={`Base is the expected outcome — built on this artist's observed catalog growth rate and your configured deal inputs. Best shifts that growth rate upward and amplifies new-release peaks, reflecting a favourable streaming environment. Worst does the opposite: catalog growth slows or turns negative and releases underperform. The spread between Best and Worst is determined by catalog stability (${anchors.catalogStabilityScore.toFixed(0)}/100) — a consistent streaming history produces a tight band; an erratic one produces a wide spread.`}
+              content={`Base is the expected outcome, built from this artist's observed streaming trend and your deal inputs. Best assumes streams grow faster and new releases spike higher — a strong environment. Worst is the opposite: streams slow down or dip and releases underperform. How wide the band is depends on catalog stability (${anchors.catalogStabilityScore.toFixed(0)}/100) — a consistent streaming history produces a tight band; an erratic one produces a wide spread.`}
             />
           </div>
           <p className="text-xs text-zinc-600 mt-0.5">
-            Confidence band width driven by catalog stability ({anchors.catalogStabilityScore.toFixed(0)}/100)
+            Scenario range driven by catalog stability ({anchors.catalogStabilityScore.toFixed(0)}/100)
           </p>
         </div>
         <ScenarioSwitcher />
@@ -267,30 +272,34 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
           label="Break-even"
           value={fmtMonth(active.breakEvenMonth)}
           sub={fmtMonthSub(active.breakEvenMonth)}
+          hint="When cumulative label revenue covers the total investment (advance + marketing). This is the cash-on-cash payback point."
           sentiment={active.breakEvenMonth != null ? "positive" : "negative"}
         />
         <KpiCard
-          label="Recoupment"
+          label="Advance Paid Back"
           value={fmtMonth(active.recoupmentMonth)}
           sub={fmtMonthSub(active.recoupmentMonth)}
+          hint="When the artist's royalty share has fully paid down the advance balance. After this point the label's share of royalties drops to the post-payback rate."
           sentiment={active.recoupmentMonth != null ? "positive" : "negative"}
         />
         <KpiCard
           label="Total ROI"
           value={`${active.totalROIPct >= 0 ? "+" : ""}${active.totalROIPct.toFixed(1)}%`}
           sub={`over ${params.contractTermYears}-yr term`}
+          hint="Total label revenue divided by total investment (advance + marketing), minus 1. A simple cash-on-cash return — does not account for the time value of money. See NPV for the time-adjusted view."
           sentiment={active.totalROIPct >= 0 ? "positive" : "negative"}
         />
         <KpiCard
           label="Label Profit"
           value={fmtUsd(active.labelProfit)}
-          sub="cumulative net"
+          sub="after advance & marketing"
+          hint="Cumulative label revenue over the full deal term, minus the total investment (advance + marketing). Undiscounted — this is the raw cash profit."
           sentiment={active.labelProfit >= 0 ? "positive" : "negative"}
         />
         <KpiCard
           label="NPV"
           value={fmtUsd(active.npv)}
-          sub={`at ${params.costOfCapitalPct}% hurdle`}
+          sub={`at ${params.costOfCapitalPct}% cost of capital`}
           sentiment={active.npv >= 0 ? "positive" : "negative"}
         />
       </div>
@@ -301,7 +310,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
         {/* Chart 1: Monthly label revenue */}
         <ChartCard
           title="Monthly Label Revenue"
-          hint="Label's net revenue per month (after distribution fee and label/artist split). The grey band spans the worst-to-best scenario range. Green marker = recoupment month; blue marker = break-even month."
+          hint="Label's net revenue per month (after the admin fee and the label/artist split). The grey band spans the worst-to-best scenario range. Green dashed line = month the advance is paid back; blue dashed line = cash break-even month."
         >
           <ResponsiveContainer width="100%" height={200}>
             <ComposedChart data={cashFlowData} margin={CHART_MARGIN}>
@@ -338,7 +347,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
                   stroke="#4ade80"
                   strokeDasharray="4 3"
                   strokeWidth={1}
-                  label={{ value: "Recouped", position: "insideTopRight", fill: "#4ade80", fontSize: 9, dy: -2 }}
+                  label={{ value: "Paid back", position: "insideTopRight", fill: "#4ade80", fontSize: 9, dy: -2 }}
                 />
               )}
               {active.breakEvenMonth != null && active.breakEvenMonth !== active.recoupmentMonth && (
@@ -362,7 +371,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
               </span>
             )}
             <span className="flex items-center gap-1.5 text-[10px] text-zinc-600">
-              <LegendSwatch color="#52525b" /> Confidence band
+              <LegendSwatch color="#52525b" /> Scenario range
             </span>
           </div>
         </ChartCard>

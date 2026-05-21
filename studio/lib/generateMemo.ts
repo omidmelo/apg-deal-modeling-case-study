@@ -90,7 +90,7 @@ function dimInsight(
         return "When this artist drops new music, streams spike sharply — strong release momentum that speeds up deal payback."
       if (score >= 40)
         return "New releases get a moderate bump in streams — a decent uplift, but nothing dramatic."
-      return "New releases barely move the needle compared to the existing catalog — limited upside from frontline releases in the deal."
+      return "New releases barely move the needle compared to the existing catalog — the deal upside depends mostly on the back catalog, not new music."
 
     case "career_runway":
       if (score >= 70)
@@ -133,8 +133,8 @@ function buildThesis(
     : ""
 
   const bePhrase =
-    returns.breakEvenMonth === null              ? "recoupment outside the base-case window" :
-    returns.breakEvenMonth <= 18                 ? `fast recoupment (month ${returns.breakEvenMonth})` :
+    returns.breakEvenMonth === null              ? "a break-even outside the base-case window" :
+    returns.breakEvenMonth <= 18                 ? `a fast break-even (month ${returns.breakEvenMonth})` :
     returns.breakEvenMonth <= 36                 ? `a manageable break-even at month ${returns.breakEvenMonth}` :
                                                    `a longer break-even horizon (month ${returns.breakEvenMonth})`
 
@@ -144,7 +144,7 @@ function buildThesis(
 
   return (
     `${artist.artist_name} presents ${trajPhrase}${strengthPhrase}. ` +
-    `The optimizer structures a deal targeting ${bePhrase} at a 12% hurdle rate.` +
+    `The optimizer structures a deal targeting ${bePhrase} at a 12% cost of capital.` +
     riskClause
   )
 }
