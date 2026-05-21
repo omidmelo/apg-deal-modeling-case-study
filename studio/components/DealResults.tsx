@@ -444,7 +444,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
       {/* Chart 3: Revenue composition — full width */}
       <ChartCard
         title="Label Revenue Composition"
-        hint="Monthly label revenue split between catalog-sourced income (grey) and new-release-sourced income (purple). Revenue is attributed proportionally to catalog vs. new-release stream share each month. Stacked so total height = total label revenue."
+        hint="Monthly label revenue split between catalog-sourced income (grey fill) and new-release-sourced income (purple fill). The purple line traces total revenue. Revenue is attributed proportionally to catalog vs. new-release stream share each month."
       >
         <ResponsiveContainer width="100%" height={180}>
           <AreaChart data={compositionData} margin={CHART_MARGIN}>
@@ -457,11 +457,22 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
             />
             <Tooltip
               {...TOOLTIP_STYLE}
-              formatter={(v: unknown, name: unknown) => [
-                fmtUsd(v as number),
-                name === "catalogRev" ? "Catalog" : "New Release",
-              ]}
-              labelFormatter={xTooltipFmt}
+              content={({ active, label, payload }) => {
+                if (!active || !payload?.length) return null
+                const row = payload[0]?.payload as { catalogRev: number; newReleaseRev: number } | undefined
+                if (!row) return null
+                const cat   = row.catalogRev   ?? 0
+                const rel   = row.newReleaseRev ?? 0
+                const total = cat + rel
+                return (
+                  <div style={TOOLTIP_STYLE.contentStyle} className="px-3 py-2 space-y-1">
+                    <p className="font-medium text-zinc-300 mb-1">{xTooltipFmt(label)}</p>
+                    <p>Catalog : <span className="text-zinc-300">{fmtUsd(cat)}</span></p>
+                    {rel > 0 && <p>New Release : <span className="text-zinc-300">{fmtUsd(rel)}</span></p>}
+                    <p className="text-[#a78bfa]">Total : <span>{fmtUsd(total)}</span></p>
+                  </div>
+                )
+              }}
             />
             <defs>
               <linearGradient id="grad-res-catalog" x1="0" y1="0" x2="0" y2="1">
@@ -503,7 +514,7 @@ export function DealResults({ anchors }: { anchors: ArtistAnchors }) {
           </span>
           {params.numNewReleases > 0 && (
             <span className="flex items-center gap-1.5 text-[10px] text-zinc-600">
-              <LegendSwatch color="#a78bfa" /> New release revenue
+              <LegendLine color="#a78bfa" /> Total revenue
             </span>
           )}
         </div>

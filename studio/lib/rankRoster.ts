@@ -18,6 +18,9 @@ import {
   DEFAULT_CONSTRAINTS,
 }                          from "@/lib/optimizeDeal"
 import { DEFAULT_PARAMS, toEngineInputs } from "@/lib/dealParams"
+import type { DealParams }                from "@/lib/dealParams"
+import { computePeakRatio }               from "@/lib/peakRatio"
+import { getArtist }                      from "@/lib/data"
 import type { RosterArtist }              from "@/types"
 import type { ArtistAnchors }             from "@/types/deal"
 
@@ -50,7 +53,12 @@ export function getTopRecommendation(roster: RosterArtist[]): RankedRecommendati
       maxInvestmentK: tier.maxK + 300,
     }
 
-    const seedParams = { ...DEFAULT_PARAMS, advanceUsd: tier.defaultK * 1_000 }
+    // Use each artist's observed peak-release / avg-catalog ratio instead of
+    // the global hardcoded default.  Falls back gracefully if detail is missing.
+    const detail         = getArtist(artist.artist_id)
+    const peakMultiplier = detail ? computePeakRatio(detail.monthly_history) : DEFAULT_PARAMS.peakMultiplier
+
+    const seedParams = { ...DEFAULT_PARAMS, advanceUsd: tier.defaultK * 1_000, peakMultiplier }
     const optimized  = optimizeDeal(seedParams, anchors, constraints)
     const params     = optimized ?? seedParams
 
@@ -79,8 +87,10 @@ export function getTopRecommendation(roster: RosterArtist[]): RankedRecommendati
       catalogTrajectoryPct:  artist.catalog_trajectory_pct,
       catalogStabilityScore: artist.scores.catalog_stability,
     }
-    const params     = { ...DEFAULT_PARAMS }
-    const projection = runDeal(toEngineInputs(params), anchors)
+    const detail         = getArtist(artist.artist_id)
+    const peakMultiplier = detail ? computePeakRatio(detail.monthly_history) : DEFAULT_PARAMS.peakMultiplier
+    const params         = { ...DEFAULT_PARAMS, peakMultiplier }
+    const projection     = runDeal(toEngineInputs(params), anchors)
     best = {
       artist,
       optimizedParams: params,
