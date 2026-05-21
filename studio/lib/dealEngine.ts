@@ -157,12 +157,8 @@ function projectScenario(
     for (const rm of releaseMonths) {
       if (t >= rm) {
         const monthsSince = t - rm
-
-        // Catalog baseline at the time the release drops (peak anchoring).
-        // Uses the same mean-reverting curve so release peaks stay consistent.
         const catalogAtRelease = catalogDailyAt[Math.min(rm, termMonths)] * 30
         const peakMonthlyStreams = catalogAtRelease * peakMultiplier
-
         newReleaseStreams +=
           peakMonthlyStreams *
           Math.pow(0.5, monthsSince / inputs.decayHalfLifeMonths)

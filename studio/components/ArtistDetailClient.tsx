@@ -5,6 +5,7 @@ import Link from "next/link"
 import { DealConfigurator } from "@/components/DealConfigurator"
 import { DealResults }      from "@/components/DealResults"
 import { useDealStore }     from "@/store/deal"
+import type { DealParams }  from "@/lib/dealParams"
 import { getAdvanceTier, DEFAULT_CONSTRAINTS, type OptimizeConstraints } from "@/lib/optimizeDeal"
 import type { ArtistAnchors } from "@/types/deal"
 import {
@@ -194,7 +195,13 @@ function ScoreDimension({
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
+export function ArtistDetailClient({
+  artist,
+  optimizedParams,
+}: {
+  artist:          ArtistDetail
+  optimizedParams: DealParams | null
+}) {
   const resetParams   = useDealStore((s) => s.resetParams)
   const setScenario   = useDealStore((s) => s.setScenario)
 
@@ -208,9 +215,9 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
     maxInvestmentK: advanceTier.maxK + 300,  // max advance + $300K marketing headroom
   }
 
-  // Reset deal params and scenario whenever the artist changes
+  // Seed the store with optimized params (or artist-adjusted defaults) on mount / artist change
   useEffect(() => {
-    resetParams({ advanceUsd: advanceTier.defaultK * 1_000 })
+    resetParams(optimizedParams ?? { advanceUsd: advanceTier.defaultK * 1_000 })
     setScenario("base")
   }, [artist.meta.artist_id]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -673,7 +680,8 @@ export function ArtistDetailClient({ artist }: { artist: ArtistDetail }) {
               key={artist.meta.artist_id}
               anchors={anchors}
               initialConstraints={artistConstraints}
-              paramDefaults={{ advanceUsd: advanceTier.defaultK * 1_000 }}
+              paramDefaults={optimizedParams ?? { advanceUsd: advanceTier.defaultK * 1_000 }}
+              initialOptimized={optimizedParams !== null}
             />
           </div>
 

@@ -47,7 +47,7 @@ export function InfoTooltip({
       {open && (
         <div
           className={[
-            "absolute z-30 w-64 max-w-[calc(100vw-3rem)] rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl pointer-events-none",
+            "absolute z-30 w-64 max-w-[calc(100vw-3rem)] rounded-md bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs text-zinc-300 leading-relaxed shadow-xl pointer-events-none normal-case tracking-normal font-normal",
             direction === "up"   ? "bottom-full left-0 mb-2" : "top-full left-0 mt-2",
           ].join(" ")}
         >

@@ -34,7 +34,7 @@
  */
 
 import { runDeal } from "@/lib/dealEngine"
-import { toEngineInputs, type DealParams } from "@/store/deal"
+import { toEngineInputs, type DealParams } from "@/lib/dealParams"
 import type { ArtistAnchors } from "@/types/deal"
 
 // ─── Advance tier ─────────────────────────────────────────────────────────────

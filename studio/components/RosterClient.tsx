@@ -3,9 +3,11 @@
 import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 
-import { fmtStreams, fmtTrajectory } from "@/lib/format"
+import { fmtStreams, fmtTrajectory, fmtUsd } from "@/lib/format"
 import { InfoTooltip } from "@/components/InfoTooltip"
 import type { RosterArtist, ScoreBreakdown } from "@/types"
+import type { RankedRecommendation } from "@/lib/rankRoster"
+import type { InvestmentMemo as Memo } from "@/lib/generateMemo"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -45,12 +47,17 @@ const SCORE_HINTS: Record<keyof ScoreBreakdown, string> = {
     "Absolute tier score (not a percentile). Based on the artist's primary market country and its DSP royalty yield (US = 100, UK = 90, Germany = 85 … Nigeria = 50). Not relative to the roster. Weight: 10%.",
 }
 
-const COLUMNS: { key: SortKey; label: string; align: "left" | "right" }[] = [
-  { key: "rank",                            label: "#",           align: "right" },
-  { key: "artist_name",                     label: "Artist",      align: "left"  },
-  { key: "genre",                           label: "Genre",       align: "left"  },
-  { key: "composite_score",                 label: "Score",       align: "right" },
-  { key: "catalog_trajectory_pct",          label: "Trajectory",  align: "right" },
+const COLUMNS: { key: SortKey; label: string; align: "left" | "right"; hint?: string }[] = [
+  { key: "rank",                            label: "#",               align: "right" },
+  { key: "artist_name",                     label: "Artist",          align: "left"  },
+  { key: "genre",                           label: "Genre",           align: "left"  },
+  { key: "composite_score",                 label: "Score",           align: "right" },
+  {
+    key:   "catalog_trajectory_pct",
+    label: "Trajectory",
+    align: "right",
+    hint:  "% change per month in catalog streams. Raw metric: slope of a linear regression on the 30-day rolling mean over the trailing 24 months, expressed as a percentage of the starting baseline. Independent of new-release activity — measures organic catalog momentum only.",
+  },
   { key: "trailing_12mo_avg_daily_streams", label: "Avg streams/day", align: "right" },
 ]
 
@@ -88,8 +95,22 @@ function SortIcon({ col, sortKey, sortDir }: { col: SortKey; sortKey: SortKey; s
 
 // ─── Top Recommendation Card ──────────────────────────────────────────────────
 
-function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
-  const router = useRouter()
+function ScorePip({ score }: { score: number }) {
+  const color = score >= 65 ? "bg-green-400" : score >= 40 ? "bg-zinc-400" : "bg-red-400"
+  return <span className={`inline-block w-1.5 h-1.5 rounded-full ${color} shrink-0 mt-1`} />
+}
+
+function fmtMonth(m: number | null) {
+  return m === null ? "—" : `Month ${m}`
+}
+
+function TopRecommendationCard({
+  artist,
+  optimizedNpv,
+  memo,
+}: RankedRecommendation & { memo: Memo }) {
+  const router          = useRouter()
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 sm:p-6 mb-6 sm:mb-8">
@@ -106,13 +127,22 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
           </p>
         </div>
 
-        {/* Right: composite score */}
-        <div className="sm:text-right sm:shrink-0">
-          <p className="text-xs text-zinc-500 mb-1">Composite Score</p>
-          <p className="text-4xl sm:text-5xl font-bold text-zinc-100 tabular-nums leading-none">
-            {artist.composite_score.toFixed(0)}
-          </p>
-          <p className="text-xs text-zinc-500 mt-1">out of 100</p>
+        {/* Right: scores */}
+        <div className="flex gap-6 sm:shrink-0 sm:text-right">
+          <div>
+            <p className="text-xs text-zinc-500 mb-1">Optimized NPV</p>
+            <p className="text-4xl sm:text-5xl font-bold text-green-400 tabular-nums leading-none">
+              {fmtUsd(optimizedNpv)}
+            </p>
+            <p className="text-xs text-zinc-500 mt-1">at 12% hurdle</p>
+          </div>
+          <div>
+            <p className="text-xs text-zinc-500 mb-1">Score</p>
+            <p className="text-4xl sm:text-5xl font-bold text-zinc-100 tabular-nums leading-none">
+              {artist.composite_score.toFixed(0)}
+            </p>
+            <p className="text-xs text-zinc-500 mt-1">out of 100</p>
+          </div>
         </div>
       </div>
 
@@ -157,20 +187,141 @@ function TopRecommendationCard({ artist }: { artist: RosterArtist }) {
           </span>
         </div>
 
-        <button
-          onClick={() => router.push(`/artist/${artist.artist_id}`)}
-          className="px-4 py-2 rounded-md bg-zinc-100 text-zinc-900 text-sm font-semibold hover:bg-white transition-colors self-start sm:self-auto"
-        >
-          View Artist →
-        </button>
+        <div className="flex items-center gap-2 self-start sm:self-auto">
+          <button
+            onClick={() => router.push(`/artist/${artist.artist_id}`)}
+            className="px-4 py-2 rounded-md bg-zinc-100 text-zinc-900 text-sm font-semibold hover:bg-white transition-colors"
+          >
+            View Artist →
+          </button>
+          <button
+            onClick={() => setOpen((o) => !o)}
+            title={open ? "Hide investment memo" : "Show investment memo"}
+            className="px-3 py-2 rounded-md border border-zinc-700 text-zinc-400 hover:text-zinc-200 hover:border-zinc-500 text-xs transition-colors"
+          >
+            {open ? "▲" : "▼"} Memo
+          </button>
+        </div>
       </div>
+
+      {/* ── Investment memo — collapsible ─────────────────────────────────── */}
+      {open && (
+        <div className="mt-5 border-t border-zinc-800 pt-5 space-y-5">
+
+          {/* Thesis */}
+          <p className="text-sm text-zinc-300 leading-relaxed">{memo.thesis}</p>
+
+          {/* Strengths + Risks */}
+          {(memo.strengths.length > 0 || memo.risks.length > 0) && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {memo.strengths.length > 0 && (
+                <div>
+                  <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mb-2">
+                    Key Strengths
+                  </p>
+                  <ul className="space-y-2.5">
+                    {memo.strengths.map((s) => (
+                      <li key={s.key} className="flex gap-2">
+                        <ScorePip score={s.score} />
+                        <div>
+                          <span className="text-xs font-medium text-zinc-300">{s.label}</span>
+                          <span className="text-xs text-zinc-600 ml-1.5 tabular-nums">{s.score.toFixed(0)}</span>
+                          <p className="text-xs text-zinc-500 mt-0.5 leading-snug">{s.insight}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {memo.risks.length > 0 && (
+                <div>
+                  <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mb-2">
+                    Risk Factors
+                  </p>
+                  <ul className="space-y-2.5">
+                    {memo.risks.map((r) => (
+                      <li key={r.key} className="flex gap-2">
+                        <ScorePip score={r.score} />
+                        <div>
+                          <span className="text-xs font-medium text-zinc-300">{r.label}</span>
+                          <span className="text-xs text-zinc-600 ml-1.5 tabular-nums">{r.score.toFixed(0)}</span>
+                          <p className="text-xs text-zinc-500 mt-0.5 leading-snug">{r.insight}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Recommended terms */}
+          <div>
+            <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mb-2">
+              Recommended Terms
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: "Term",       value: `${memo.deal.termYears}yr`                                         },
+                { label: "Advance",    value: fmtUsd(memo.deal.advanceK * 1_000)                                  },
+                { label: "Marketing",  value: fmtUsd(memo.deal.marketingK * 1_000)                               },
+                { label: "Investment", value: `${fmtUsd(memo.deal.totalInvestmentK * 1_000)} total`              },
+                { label: "Split",      value: `${memo.deal.labelSharePrePct}/${memo.deal.labelSharePostPct}`      },
+                { label: "Recoupment", value: `${memo.deal.recoupmentRatePct}%`                                  },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex flex-col px-3 py-2 rounded-md bg-zinc-800/60 border border-zinc-700/40">
+                  <span className="text-[10px] text-zinc-600 uppercase tracking-wider">{label}</span>
+                  <span className="text-xs font-semibold text-zinc-200 tabular-nums mt-0.5">{value}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-zinc-600 mt-2">Split shown as label share pre-recoup / post-recoup.</p>
+          </div>
+
+          {/* Projected returns */}
+          <div>
+            <p className="text-[10px] font-semibold text-zinc-600 uppercase tracking-widest mb-2">
+              Projected Returns
+            </p>
+            <div className="grid grid-cols-3 gap-3 mb-3">
+              {([
+                { scenario: "Worst", npv: memo.returns.worstNpv },
+                { scenario: "Base",  npv: memo.returns.baseNpv  },
+                { scenario: "Best",  npv: memo.returns.bestNpv  },
+              ] as const).map(({ scenario, npv }) => {
+                const color = npv > 0 ? "text-green-400" : npv < 0 ? "text-red-400" : "text-zinc-100"
+                return (
+                <div key={scenario} className="flex flex-col items-center py-3 rounded-md bg-zinc-800/60 border border-zinc-700/40">
+                  <span className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">{scenario}</span>
+                  <span className={`text-lg font-bold tabular-nums ${color}`}>{fmtUsd(npv)}</span>
+                  <span className="text-[10px] text-zinc-600 mt-0.5">NPV</span>
+                </div>
+              )})}
+            </div>
+            <div className="flex gap-6 text-xs text-zinc-500">
+              <span>Break-even <span className="text-zinc-300 font-medium">{fmtMonth(memo.returns.breakEvenMonth)}</span></span>
+              <span>Recoupment <span className="text-zinc-300 font-medium">{fmtMonth(memo.returns.recoupmentMonth)}</span></span>
+              <span>ROI <span className="text-zinc-300 font-medium">{memo.returns.totalRoiPct.toFixed(0)}%</span></span>
+            </div>
+          </div>
+
+        </div>
+      )}
     </div>
   )
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export function RosterClient({ artists }: { artists: RosterArtist[] }) {
+export function RosterClient({
+  artists,
+  topRecommendation,
+  memo,
+}: {
+  artists:           RosterArtist[]
+  topRecommendation: RankedRecommendation
+  memo:              Memo
+}) {
   const router = useRouter()
 
   const [search,      setSearch]      = useState("")
@@ -215,7 +366,7 @@ export function RosterClient({ artists }: { artists: RosterArtist[] }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
 
-      <TopRecommendationCard artist={artists[0]} />
+      <TopRecommendationCard {...topRecommendation} memo={memo} />
 
       {/* Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2 sm:gap-4">
@@ -260,7 +411,10 @@ export function RosterClient({ artists }: { artists: RosterArtist[] }) {
                     sortKey === col.key ? "text-zinc-200" : "text-zinc-500",
                   ].join(" ")}
                 >
-                  {col.label}
+                  <span className="inline-flex items-center gap-1">
+                    {col.label}
+                    {col.hint && <InfoTooltip content={col.hint} direction="down" />}
+                  </span>
                   <SortIcon col={col.key} sortKey={sortKey} sortDir={sortDir} />
                 </th>
               ))}

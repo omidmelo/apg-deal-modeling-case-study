@@ -183,10 +183,12 @@ export function DealConfigurator({
   anchors,
   initialConstraints = DEFAULT_CONSTRAINTS,
   paramDefaults = {},
+  initialOptimized = false,
 }: {
   anchors:             ArtistAnchors
   initialConstraints?: OptimizeConstraints
   paramDefaults?:      Partial<DealParams>
+  initialOptimized?:   boolean
 }) {
   const resetParams = useDealStore((s) => s.resetParams)
   const setParams   = useDealStore((s) => s.setParams)
@@ -195,15 +197,24 @@ export function DealConfigurator({
   // Optimizer UI state
   const [showConstraints, setShowConstraints] = useState(false)
   const [constraints,     setConstraints]     = useState<OptimizeConstraints>(initialConstraints)
-  const [optimized,       setOptimized]       = useState(false)
+  const [optimized,       setOptimized]       = useState(initialOptimized)
   const [noSolution,      setNoSolution]      = useState(false)
 
-  // Tracks whether the most recent params change came from the optimizer.
-  // Prevents the params watcher below from immediately clearing the pill.
+  // skipCount absorbs the two predictable params fires that must never clear the pill:
+  //   fire 1 — initial mount (params value from the store before any reset)
+  //   fire 2 — parent's useEffect seeding the store with optimized/default params
+  const skipCount = useRef(2)
+
+  // Set to true before any programmatic setParams call (Optimize button, Reset)
+  // so that one additional fire is absorbed instead of clearing the pill.
   const justOptimized = useRef(false)
 
-  // Clear the "Optimized" pill whenever the user manually edits any param.
+  // Clear the "Optimized" pill whenever the user manually edits a param.
   useEffect(() => {
+    if (skipCount.current > 0) {
+      skipCount.current -= 1
+      return
+    }
     if (justOptimized.current) {
       justOptimized.current = false
       return
@@ -246,12 +257,14 @@ export function DealConfigurator({
             </span>
           )}
         </div>
-        <button
-          onClick={() => { resetParams(paramDefaults); setOptimized(false); setNoSolution(false) }}
-          className="text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors"
-        >
-          Reset
-        </button>
+        {!optimized && (
+          <button
+            onClick={() => { justOptimized.current = true; resetParams(paramDefaults); setOptimized(initialOptimized); setNoSolution(false) }}
+            className="text-[10px] text-zinc-600 hover:text-zinc-400 transition-colors"
+          >
+            Reset
+          </button>
+        )}
       </div>
 
       {/* ── Deal Economics ───────────────────────────────────────────────── */}
