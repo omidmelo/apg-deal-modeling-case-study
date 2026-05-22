@@ -254,8 +254,6 @@ export function ArtistDetailClient({
     const yVals = valid.map((d) => d.catalog_rolling_30d as number)
     const meanX = (n - 1) / 2
     const meanY = yVals.reduce((s, y) => s + y, 0) / n
-    const sumXX = yVals.reduce((_, __, i) => (i - meanX) ** 2, 0)
-    // proper sum
     let sxx = 0
     let sxy = 0
     for (let i = 0; i < n; i++) {

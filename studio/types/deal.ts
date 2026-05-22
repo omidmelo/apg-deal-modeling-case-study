@@ -171,7 +171,7 @@ export const DEFAULT_DEAL_INPUTS: DealInputs = {
   labelSharePreRecoup:  0.80,      // label keeps 80% pre-recoup
   labelSharePostRecoup: 0.50,      // 50/50 post-recoup
   recoupmentRatePct:    1.00,      // 100% of net royalties count toward recoup
-  costOfCapitalAnnual:  0.08,      // 8% hurdle rate
+  costOfCapitalAnnual:  0.08,      // fallback default — overridden by costOfCapitalPct in DealParams (default 12%)
   numNewReleases:       2,
   deliveryWindowMonths: 24,
   peakMultiplier:       3.0,

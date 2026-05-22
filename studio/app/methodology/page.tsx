@@ -401,8 +401,8 @@ export default function MethodologyPage() {
                 </Formula>
                 <Note>
                   The split is determined by the balance at the <em>start</em> of the month. If the
-                  balance tips to zero mid-month, the pre-recoup rate still applies for that
-                  month; the post-recoup rate activates from the following month.
+                  balance tips to zero mid-month, the pre-payback rate still applies for that
+                  month; the post-payback rate activates from the following month.
                 </Note>
               </SubSection>
 
